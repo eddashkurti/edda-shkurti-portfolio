@@ -1,8 +1,8 @@
 export const profile = {
   name: "Edda Shkurti",
-  email: "edda.email@example.com", // TODO: Replace with Edda's real email.
-  github: "https://github.com/edda-shkurti", // TODO: Replace with Edda's real GitHub URL.
-  resume: "/resume-placeholder.pdf", // TODO: Replace with the real resume file or URL.
+  email: "shkurtiedda@gmail.com",
+  github: "https://github.com/eddashkurti",
+  resume: "/Edda-Shkurti-CV.pdf",
 };
 
 export const socialLinks = [
@@ -26,42 +26,44 @@ export const featuredProject = {
     "Quarantine pipelines",
     "Gold checks passing",
   ],
-  githubUrl: "https://github.com/edda-shkurti/novacart-data-platform", // TODO: Replace with the real NovaCart repository URL.
-  architecture: ["Olist Dataset", "ADLS Gen2", "Bronze", "Silver", "Gold"],
+  githubUrl: null,
+  architecture: [
+    { label: "SOURCE", value: "Olist Dataset" },
+    { label: "STORAGE", value: "ADLS Gen2" },
+    { label: "BRONZE", value: "Raw ingestion" },
+    { label: "SILVER", value: "Validated transforms" },
+    { label: "GOLD", value: "Analytics tables" },
+  ],
 };
 
 export const projects = [
   {
     number: "02",
     title: "Metadata-Driven Data Governance & Monitoring Platform",
-    description:
-      "A governance and monitoring platform designed around metadata-driven classification, compliance visibility, governance insights, and business-facing analytics.",
+    description: "Metadata-driven governance platform for classification, compliance monitoring and analytics.",
     technologies: ["Databricks", "Python", "SQL", "Data Governance", "Analytics"],
-    href: "https://github.com/edda-shkurti/governance-platform", // TODO: Replace with the real project URL.
+    href: null,
   },
   {
     number: "03",
     title: "Heart Disease ETL Pipeline",
-    description:
-      "Python-based ETL application for ingesting, validating, cleaning, deduplicating, and reporting on heart-disease data, with invalid records separated into a quarantine dataset.",
+    description: "Python ETL pipeline for ingesting, validating, cleaning and reporting on heart-disease data.",
     technologies: ["Python", "ETL", "Data Validation", "CLI", "Data Quality"],
-    href: "https://github.com/edda-shkurti/heart-disease-etl", // TODO: Replace with the real project URL.
+    href: null,
   },
   {
     number: "04",
     title: "CloudVision AI",
-    description:
-      "Cloud-hosted image classification application using TensorFlow.js MobileNet V2 with drag-and-drop upload and top-three prediction results.",
+    description: "Cloud-hosted image classification app using TensorFlow.js with drag-and-drop predictions.",
     technologies: ["AWS", "TensorFlow.js", "JavaScript", "Vite", "S3"],
-    href: "https://github.com/edda-shkurti/cloudvision-ai", // TODO: Replace with the real project URL.
+    href: "https://github.com/eddashkurti/CloudVision-AI",
   },
   {
     number: "05",
     title: "Meeting Optimizer",
-    description:
-      "Role-based meeting and workflow management application featuring Kanban workflows, WIP limits, approvals, notes, calendars, and dashboards.",
+    description: "Role-based meeting and workflow app with Kanban boards, approvals, notes and dashboards.",
     technologies: ["React", "Vite", "Tailwind CSS"],
-    href: "https://github.com/edda-shkurti/meeting-optimizer", // TODO: Replace with the real project URL.
+    href: "https://github.com/gegedobruna/meeting-optimizer",
   },
 ];
 
@@ -81,16 +83,16 @@ export const experience = {
   ],
 };
 
-export const achievements = [
-  { label: "Databricks Certified Data Engineer Associate", detail: "2026" },
-  { label: "1st Place — University Coding Competition", detail: "" },
-  { label: "BSc Computer Engineering", detail: "International Balkan University" },
-  { label: "Outside engineering", detail: "Photography & videography" },
+export const aboutFacts = [
+  { label: "I like", detail: "Building things that are useful" },
+  { label: "Outside the screen", detail: "Photography & videography" },
+  { label: "Always curious about", detail: "Technology, design & how things work" },
+  { label: "Based in", detail: "Kosovo" },
 ];
 
 export const toolkit = [
-  { group: "Languages", items: ["Python", "SQL", "JavaScript"] },
-  { group: "Data", items: ["Databricks", "PySpark", "Spark", "Delta Lake", "ETL", "Data Quality"] },
-  { group: "Cloud", items: ["Azure", "ADLS Gen2", "AWS", "S3"] },
-  { group: "Engineering", items: ["Git", "GitHub", "Linux", "Vite", "React"] },
+  { number: "01", group: "Languages", items: ["Python", "SQL", "JavaScript"] },
+  { number: "02", group: "Data", items: ["Databricks", "PySpark", "Delta Lake", "ETL", "Data Quality"] },
+  { number: "03", group: "Cloud", items: ["Azure", "ADLS Gen2", "AWS", "S3"] },
+  { number: "04", group: "Engineering", items: ["Git", "GitHub", "Linux", "Vite", "React"] },
 ];

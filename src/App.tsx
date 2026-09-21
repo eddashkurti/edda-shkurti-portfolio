@@ -1,5 +1,5 @@
 import {
-  achievements,
+  aboutFacts,
   experience,
   featuredProject,
   profile,
@@ -7,6 +7,7 @@ import {
   socialLinks,
   toolkit,
 } from "./content";
+import type { ReactNode } from "react";
 
 const navItems = [
   { label: "Work", href: "#work" },
@@ -15,19 +16,27 @@ const navItems = [
   { label: "Contact", href: "#contact" },
 ];
 
-function ExternalLink({ href, children }: { href: string; children: React.ReactNode }) {
+function ExternalLink({ href, children, ariaLabel }: { href: string; children: ReactNode; ariaLabel?: string }) {
+  const isExternal = href.startsWith("http");
+
   return (
-    <a className="text-link" href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noreferrer">
+    <a
+      className="text-link"
+      href={href}
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? "noopener noreferrer" : undefined}
+      aria-label={ariaLabel}
+    >
       {children} <span aria-hidden="true">↗</span>
     </a>
   );
 }
 
-function SectionHeading({ number, title }: { number: string; title: string }) {
+function SectionHeading({ number, title, id }: { number: string; title: string; id?: string }) {
   return (
     <div className="section-heading">
       <span>{number}</span>
-      <h2>{title}</h2>
+      <h2 id={id}>{title}</h2>
     </div>
   );
 }
@@ -44,7 +53,9 @@ function Header() {
             {item.label}
           </a>
         ))}
-        <a href={profile.resume}>Resume ↗</a>
+        <a href={profile.resume} target="_blank" rel="noopener noreferrer">
+          Resume ↗
+        </a>
       </nav>
     </header>
   );
@@ -55,15 +66,15 @@ function Hero() {
     <section className="hero" aria-labelledby="hero-title">
       <p className="intro">Hello, I'm Edda.</p>
       <h1 id="hero-title">
-        I build reliable data systems <em>and software that makes sense.</em>
+        <span>I build reliable data systems</span> <em>and software that makes sense.</em>
       </h1>
       <p className="hero-copy">
-        Computer Engineering graduate focused on Data Engineering and Software Engineering. I build reliable pipelines,
+        Computer Engineering student focused on Data Engineering and Software Engineering. I build reliable pipelines,
         cloud-based data platforms, and practical software using Python, SQL, Databricks, and modern cloud technologies.
       </p>
       <div className="hero-links" aria-label="Primary links">
         {socialLinks.map((link) => (
-          <ExternalLink key={link.label} href={link.href}>
+          <ExternalLink key={link.label} href={link.href} ariaLabel={`${link.label} for Edda Shkurti`}>
             {link.label}
           </ExternalLink>
         ))}
@@ -76,8 +87,9 @@ function ArchitectureDiagram() {
   return (
     <ol className="architecture" aria-label="NovaCart platform architecture">
       {featuredProject.architecture.map((step) => (
-        <li key={step}>
-          <span>{step}</span>
+        <li key={step.label}>
+          <span>{step.label}</span>
+          <strong>{step.value}</strong>
         </li>
       ))}
     </ol>
@@ -102,7 +114,11 @@ function FeaturedProject() {
             <span key={metric}>{metric}</span>
           ))}
         </div>
-        <ExternalLink href={featuredProject.githubUrl}>View project</ExternalLink>
+        {featuredProject.githubUrl && (
+          <ExternalLink href={featuredProject.githubUrl} ariaLabel="View NovaCart Data Platform on GitHub">
+            View project
+          </ExternalLink>
+        )}
       </div>
       <div className="feature-visual">
         <p>Medallion architecture</p>
@@ -113,8 +129,8 @@ function FeaturedProject() {
 }
 
 function ProjectCard({ project }: { project: (typeof projects)[number] }) {
-  return (
-    <a className="project-card" href={project.href} target="_blank" rel="noreferrer">
+  const content = (
+    <>
       <span className="project-number">{project.number}</span>
       <div>
         <h3>{project.title}</h3>
@@ -125,17 +141,27 @@ function ProjectCard({ project }: { project: (typeof projects)[number] }) {
           ))}
         </div>
       </div>
-      <span className="arrow" aria-hidden="true">
-        ↗
-      </span>
+      {project.href && (
+        <span className="arrow" aria-hidden="true">
+          ↗
+        </span>
+      )}
+    </>
+  );
+
+  return project.href ? (
+    <a className="project-card" href={project.href} target="_blank" rel="noopener noreferrer">
+      {content}
     </a>
+  ) : (
+    <article className="project-card project-card-static">{content}</article>
   );
 }
 
 function Work() {
   return (
     <section className="section" id="work" aria-labelledby="work-title">
-      <SectionHeading number="01" title="Selected work" />
+      <SectionHeading number="01" title="Selected work" id="work-title" />
       <FeaturedProject />
       <div className="project-grid">
         {projects.map((project) => (
@@ -149,7 +175,7 @@ function Work() {
 function Experience() {
   return (
     <section className="section section-narrow" id="experience" aria-labelledby="experience-title">
-      <SectionHeading number="02" title="Experience" />
+      <SectionHeading number="02" title="Experience" id="experience-title" />
       <article className="experience-item">
         <div>
           <h3>{experience.role}</h3>
@@ -170,24 +196,23 @@ function Experience() {
 function About() {
   return (
     <section className="section about" id="about" aria-labelledby="about-title">
-      <SectionHeading number="03" title="A little about me." />
+      <SectionHeading number="03" title="A little about me." id="about-title" />
       <div className="about-layout">
         <div className="about-copy">
           <p>
-            I studied Computer Engineering and gradually found myself most interested in the point where software, data,
-            and cloud infrastructure meet. I enjoy building systems from the raw-data stage through validation,
-            transformation, and delivery — and understanding why they work rather than simply making them run.
+            I study Computer Engineering, and I have become most interested in the point where software, data, and cloud
+            infrastructure meet. I like building from the raw-data stage through validation, transformation, and delivery.
           </p>
           <p>
-            Beyond data engineering, I am curious about practical software engineering, cloud technologies, and the way
-            good tools can make complex work feel simpler.
+            I care about understanding how systems work, not only making them run. The work I enjoy most is practical,
+            useful, and clear enough for other people to build on.
           </p>
         </div>
-        <div className="achievements" aria-label="Achievements">
-          {achievements.map((achievement) => (
-            <div key={achievement.label}>
-              <strong>{achievement.label}</strong>
-              {achievement.detail && <span>{achievement.detail}</span>}
+        <div className="about-facts" aria-label="About Edda">
+          {aboutFacts.map((fact) => (
+            <div key={fact.label}>
+              <strong>{fact.label}</strong>
+              <span>{fact.detail}</span>
             </div>
           ))}
         </div>
@@ -199,10 +224,11 @@ function About() {
 function Toolkit() {
   return (
     <section className="section toolkit" aria-labelledby="toolkit-title">
-      <SectionHeading number="" title="Toolkit" />
-      <div className="toolkit-grid" id="toolkit-title">
+      <SectionHeading number="" title="Toolkit" id="toolkit-title" />
+      <div className="toolkit-grid">
         {toolkit.map((group) => (
           <div key={group.group}>
+            <span>{group.number}</span>
             <h3>{group.group}</h3>
             <p>{group.items.join(" · ")}</p>
           </div>
@@ -216,12 +242,20 @@ function Contact() {
   return (
     <section className="section contact" id="contact" aria-labelledby="contact-title">
       <span className="section-number">04</span>
-      <h2 id="contact-title">Let's connect.</h2>
+      <h2 id="contact-title">
+        Let's <em>connect.</em>
+      </h2>
       <p>I’m interested in opportunities where I can build, learn, and work on meaningful engineering problems.</p>
       <div className="contact-links">
-        <ExternalLink href={`mailto:${profile.email}`}>Email me</ExternalLink>
-        <ExternalLink href={profile.github}>GitHub</ExternalLink>
-        <ExternalLink href={profile.resume}>Resume</ExternalLink>
+        <ExternalLink href={`mailto:${profile.email}`} ariaLabel="Email Edda Shkurti">
+          Email me
+        </ExternalLink>
+        <ExternalLink href={profile.github} ariaLabel="Open Edda Shkurti GitHub profile">
+          GitHub
+        </ExternalLink>
+        <ExternalLink href={profile.resume} ariaLabel="Open Edda Shkurti CV">
+          Resume
+        </ExternalLink>
       </div>
     </section>
   );
