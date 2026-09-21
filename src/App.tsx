@@ -40,6 +40,15 @@ function SectionHeading({ number, title, id }: { number: string; title: string; 
   );
 }
 
+function ChapterLabel({ kicker, title }: { kicker: string; title: string }) {
+  return (
+    <p className="chapter-label">
+      <span>{kicker}</span>
+      {title}
+    </p>
+  );
+}
+
 function Header() {
   return (
     <header className="site-header">
@@ -62,15 +71,23 @@ function Header() {
 
 function Hero() {
   return (
-    <section className="hero" aria-labelledby="hero-title">
-      <p className="intro">Hello, I'm Edda.</p>
-      <h1 id="hero-title">
-        <span>I build reliable data systems</span> <em>and software that makes sense.</em>
-      </h1>
-      <p className="hero-copy">
-        Computer Engineering student focused on Data Engineering and Software Engineering. I build reliable pipelines,
-        cloud-based data platforms, and practical software using Python, SQL, Databricks, and modern cloud technologies.
-      </p>
+    <section className="hero chapter chapter-light" aria-labelledby="hero-title">
+      <div className="hero-grid">
+        <div>
+          <p className="intro">Hello, I'm Edda.</p>
+          <h1 id="hero-title">
+            <span>I build reliable data systems</span> <em>and software that makes sense.</em>
+          </h1>
+        </div>
+        <div className="hero-side">
+          <p className="mono">DATA / SOFTWARE</p>
+          <p>
+            Computer Engineering student focused on Data Engineering and Software Engineering. I build reliable
+            pipelines, cloud-based data platforms, and practical software using Python, SQL, Databricks, and modern cloud
+            technologies.
+          </p>
+        </div>
+      </div>
     </section>
   );
 }
@@ -78,6 +95,25 @@ function Hero() {
 function FeaturedProject() {
   return (
     <article className="featured-project">
+      <div className="feature-backdrop" aria-hidden="true">
+        <span>BRONZE</span>
+        <span>SILVER</span>
+        <span>GOLD</span>
+      </div>
+      <div className="feature-data" aria-hidden="true">
+        <span>
+          99K+
+          <small>ORDERS</small>
+        </span>
+        <span>
+          112K+
+          <small>ORDER ITEMS</small>
+        </span>
+        <span>
+          08
+          <small>GOLD TABLES</small>
+        </span>
+      </div>
       <div className="feature-copy">
         <p className="project-number">{featuredProject.number} Featured project</p>
         <h3>{featuredProject.title}</h3>
@@ -130,7 +166,8 @@ function ProjectCard({ project }: { project: (typeof projects)[number] }) {
 
 function Work() {
   return (
-    <section className="section" id="work" aria-labelledby="work-title">
+    <section className="chapter chapter-dark section" id="work" aria-labelledby="work-title">
+      <ChapterLabel kicker="Chapter 02" title="Work" />
       <SectionHeading number="01" title="Selected work" id="work-title" />
       <FeaturedProject />
       <div className="project-grid">
@@ -144,7 +181,8 @@ function Work() {
 
 function Experience() {
   return (
-    <section className="section section-narrow" id="experience" aria-labelledby="experience-title">
+    <section className="chapter chapter-light section section-narrow" id="experience" aria-labelledby="experience-title">
+      <ChapterLabel kicker="Chapter 03" title="Profile" />
       <SectionHeading number="02" title="Experience" id="experience-title" />
       <article className="experience-item">
         <div>
@@ -165,7 +203,7 @@ function Experience() {
 
 function About() {
   return (
-    <section className="section about" id="about" aria-labelledby="about-title">
+    <section className="chapter chapter-light section about" id="about" aria-labelledby="about-title">
       <SectionHeading number="03" title="A little about me." id="about-title" />
       <div className="about-layout">
         <div className="about-copy">
@@ -193,7 +231,7 @@ function About() {
 
 function Toolkit() {
   return (
-    <section className="section toolkit" aria-labelledby="toolkit-title">
+    <section className="chapter chapter-light section toolkit" aria-labelledby="toolkit-title">
       <SectionHeading number="" title="Toolkit" id="toolkit-title" />
       <div className="toolkit-grid">
         {toolkit.map((group) => (
@@ -210,15 +248,15 @@ function Toolkit() {
 
 function Contact() {
   return (
-    <section className="section contact" id="contact" aria-labelledby="contact-title">
-      <span className="section-number">04</span>
+    <section className="chapter chapter-red section contact" id="contact" aria-labelledby="contact-title">
+      <ChapterLabel kicker="Chapter 04" title="Contact" />
       <h2 id="contact-title">
-        Let's <em>connect.</em>
+        <span>Let's</span> <em>connect.</em>
       </h2>
       <p>I’m interested in opportunities where I can build, learn, and work on meaningful engineering problems.</p>
       <div className="contact-links">
         <ExternalLink href={`mailto:${profile.email}`} ariaLabel="Email Edda Shkurti">
-          Email me
+          Email
         </ExternalLink>
         <ExternalLink href={profile.github} ariaLabel="Open Edda Shkurti GitHub profile">
           GitHub
