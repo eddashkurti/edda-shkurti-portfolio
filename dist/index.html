@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your Name - Portfolio</title>
+  <meta name="description" content="A focused portfolio for a thoughtful builder, strategist, and collaborator.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23101418'/%3E%3Cpath d='M18 42V18h11c7 0 12 5 12 12s-5 12-12 12H18Zm8-7h3c4 0 6-2 6-5s-2-5-6-5h-3v10Z' fill='%23f5d06f'/%3E%3Cpath d='M43 42l8-24h-7l-5 16-5-16h-7l8 24h8Z' fill='%237bdff2'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="site-header" aria-label="Portfolio header">
+    <a class="mark" href="#top" aria-label="Home">YN</a>
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="#work">Work</a>
+      <a href="#approach">Approach</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="intro-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Available for selected projects</p>
+        <h1 id="intro-title">Your Name builds clear, useful digital work for teams with ambitious ideas.</h1>
+        <p class="lead">I turn early thinking into polished products, sharp systems, and practical stories people can act on. Replace this line with your specialty, audience, and strongest proof point.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#work">View work</a>
+          <a class="button secondary" href="mailto:hello@example.com">hello@example.com</a>
+        </div>
+      </div>
+      <aside class="snapshot" aria-label="Professional snapshot">
+        <div>
+          <span class="metric">8+</span>
+          <span>Years shaping products, brands, and operations</span>
+        </div>
+        <div>
+          <span class="metric">24</span>
+          <span>Launches, campaigns, and systems delivered</span>
+        </div>
+        <div>
+          <span class="metric">3</span>
+          <span>Core strengths: strategy, craft, momentum</span>
+        </div>
+      </aside>
+    </section>
+
+    <section class="strip" aria-label="Focus areas">
+      <span>Product strategy</span>
+      <span>UX direction</span>
+      <span>Brand systems</span>
+      <span>Launch planning</span>
+      <span>Writing</span>
+    </section>
+
+    <section class="section" id="work" aria-labelledby="work-title">
+      <div class="section-heading">
+        <p class="eyebrow">Selected work</p>
+        <h2 id="work-title">Projects with a point of view.</h2>
+      </div>
+      <div class="work-grid">
+        <article class="project project-a">
+          <div class="project-visual" aria-hidden="true"></div>
+          <div class="project-body">
+            <p class="project-type">Case study</p>
+            <h3>Customer onboarding redesign</h3>
+            <p>Clarified a scattered activation journey into a focused first-week experience, helping new users reach value faster.</p>
+            <ul>
+              <li>Mapped high-friction moments</li>
+              <li>Redesigned core flows</li>
+              <li>Aligned product and support teams</li>
+            </ul>
+          </div>
+        </article>
+        <article class="project project-b">
+          <div class="project-visual" aria-hidden="true"></div>
+          <div class="project-body">
+            <p class="project-type">System</p>
+            <h3>Editorial operating model</h3>
+            <p>Created a repeatable planning rhythm for a small team publishing complex ideas across multiple channels.</p>
+            <ul>
+              <li>Defined roles and review gates</li>
+              <li>Built reusable briefs</li>
+              <li>Improved delivery confidence</li>
+            </ul>
+          </div>
+        </article>
+        <article class="project project-c">
+          <div class="project-visual" aria-hidden="true"></div>
+          <div class="project-body">
+            <p class="project-type">Launch</p>
+            <h3>New product narrative</h3>
+            <p>Translated a technical release into a simple story, launch page, and sales-ready messaging framework.</p>
+            <ul>
+              <li>Positioned the offer</li>
+              <li>Wrote launch copy</li>
+              <li>Prepared stakeholder materials</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section split" id="approach" aria-labelledby="approach-title">
+      <div>
+        <p class="eyebrow">How I work</p>
+        <h2 id="approach-title">Calm process, strong opinions, practical output.</h2>
+      </div>
+      <div class="principles">
+        <article>
+          <span>01</span>
+          <h3>Make the problem legible</h3>
+          <p>I start by separating signal from noise so teams can see what matters and make cleaner decisions.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>Prototype the truth</h3>
+          <p>I prefer tangible drafts, maps, and working surfaces that reveal tradeoffs early.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>Leave useful systems behind</h3>
+          <p>The best work keeps helping after handoff through templates, patterns, and shared language.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div>
+        <p class="eyebrow">Contact</p>
+        <h2 id="contact-title">Have something worth making clearer?</h2>
+        <p>Send a note with the context, timeline, and what you are trying to move forward.</p>
+      </div>
+      <div class="contact-actions">
+        <a class="button primary" href="mailto:hello@example.com">Start a conversation</a>
+        <button class="button secondary" type="button" id="copyEmail">Copy email</button>
+        <p class="copy-status" id="copyStatus" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>Your Name</span>
+    <span>Portfolio updated 2026</span>
+  </footer>
+
+  <script src="./script.js"></script>
+</body>
+</html>
