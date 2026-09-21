@@ -4,7 +4,6 @@ import {
   featuredProject,
   profile,
   projects,
-  socialLinks,
   toolkit,
 } from "./content";
 import type { ReactNode } from "react";
@@ -72,27 +71,7 @@ function Hero() {
         Computer Engineering student focused on Data Engineering and Software Engineering. I build reliable pipelines,
         cloud-based data platforms, and practical software using Python, SQL, Databricks, and modern cloud technologies.
       </p>
-      <div className="hero-links" aria-label="Primary links">
-        {socialLinks.map((link) => (
-          <ExternalLink key={link.label} href={link.href} ariaLabel={`${link.label} for Edda Shkurti`}>
-            {link.label}
-          </ExternalLink>
-        ))}
-      </div>
     </section>
-  );
-}
-
-function ArchitectureDiagram() {
-  return (
-    <ol className="architecture" aria-label="NovaCart platform architecture">
-      {featuredProject.architecture.map((step) => (
-        <li key={step.label}>
-          <span>{step.label}</span>
-          <strong>{step.value}</strong>
-        </li>
-      ))}
-    </ol>
   );
 }
 
@@ -109,20 +88,11 @@ function FeaturedProject() {
             <span key={tech}>{tech}</span>
           ))}
         </div>
-        <div className="metrics" aria-label="NovaCart project metrics">
-          {featuredProject.metrics.map((metric) => (
-            <span key={metric}>{metric}</span>
-          ))}
-        </div>
         {featuredProject.githubUrl && (
           <ExternalLink href={featuredProject.githubUrl} ariaLabel="View NovaCart Data Platform on GitHub">
             View project
           </ExternalLink>
         )}
-      </div>
-      <div className="feature-visual">
-        <p>Medallion architecture</p>
-        <ArchitectureDiagram />
       </div>
     </article>
   );

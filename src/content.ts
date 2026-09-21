@@ -5,35 +5,14 @@ export const profile = {
   resume: "/Edda-Shkurti-CV.pdf",
 };
 
-export const socialLinks = [
-  { label: "GitHub", href: profile.github },
-  { label: "Email", href: `mailto:${profile.email}` },
-  { label: "Resume", href: profile.resume },
-];
-
 export const featuredProject = {
   number: "01",
   title: "NovaCart Data Platform",
   subtitle: "End-to-end e-commerce data platform built with Azure and Databricks.",
   description:
-    "A production-style data engineering project built around a medallion architecture, transforming raw Olist e-commerce data through Bronze, Silver, and Gold layers with automated validation, quarantine handling, and data-quality checks.",
+    "A production-style data engineering project built around a medallion architecture, transforming raw Olist e-commerce data through Bronze, Silver, and Gold layers. The platform processes 99K+ orders and 112K+ order items into 8 Gold tables, with automated validation, quarantine pipelines, and passing final Gold quality checks.",
   technologies: ["Azure", "ADLS Gen2", "Databricks", "PySpark", "Delta Lake", "Python"],
-  metrics: [
-    "99K+ orders",
-    "112K+ order items",
-    "8 Gold tables",
-    "Automated validation",
-    "Quarantine pipelines",
-    "Gold checks passing",
-  ],
   githubUrl: null,
-  architecture: [
-    { label: "SOURCE", value: "Olist Dataset" },
-    { label: "STORAGE", value: "ADLS Gen2" },
-    { label: "BRONZE", value: "Raw ingestion" },
-    { label: "SILVER", value: "Validated transforms" },
-    { label: "GOLD", value: "Analytics tables" },
-  ],
 };
 
 export const projects = [

@@ -105,11 +105,11 @@ button:focus-visible {
 }
 
 .hero {
-  min-height: calc(100vh - 4.5rem);
+  min-height: min(760px, calc(88vh - 4.5rem));
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-block: clamp(6rem, 12vw, 10rem);
+  padding-block: clamp(5rem, 9vw, 8rem);
 }
 
 .intro,
@@ -117,10 +117,15 @@ button:focus-visible {
 .section-heading span,
 .section-number {
   color: var(--accent);
-  font-size: 0.79rem;
+  font-size: 0.8rem;
   font-weight: 620;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+.intro {
+  font-size: clamp(1rem, 1.35vw, 1.1rem);
+  letter-spacing: 0.09em;
 }
 
 h1,
@@ -158,7 +163,6 @@ em {
   line-height: 1.75;
 }
 
-.hero-links,
 .contact-links {
   display: flex;
   flex-wrap: wrap;
@@ -183,7 +187,7 @@ em {
 }
 
 .section {
-  padding-block: clamp(5rem, 11vw, 9rem);
+  padding-block: clamp(3.9rem, 8vw, 6.8rem);
   border-top: 1px solid var(--border);
 }
 
@@ -209,11 +213,12 @@ em {
 }
 
 .featured-project {
-  display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
-  gap: clamp(2rem, 5vw, 4rem);
-  padding: clamp(1.4rem, 4vw, 2.4rem) 0 clamp(2rem, 5vw, 3rem);
+  padding: clamp(1.4rem, 3vw, 2.2rem) 0 clamp(1.8rem, 4vw, 2.7rem);
   border-block: 1px solid var(--ink);
+}
+
+.feature-copy {
+  max-width: 900px;
 }
 
 .feature-copy h3 {
@@ -237,22 +242,24 @@ em {
   line-height: 1.75;
 }
 
-.metadata,
-.metrics {
+.metadata {
   display: flex;
   flex-wrap: wrap;
   gap: 0.55rem 0.9rem;
   margin-top: 1.35rem;
 }
 
-.metadata span,
-.metrics span {
+.metadata span {
   color: var(--muted);
   font-size: 0.8rem;
 }
 
-.metadata span:not(:last-child)::after,
-.metrics span:not(:last-child)::after {
+.project-card .metadata span {
+  color: #85847c;
+  font-size: 0.75rem;
+}
+
+.metadata span:not(:last-child)::after {
   content: "/";
   margin-left: 0.9rem;
   color: #b5b0a8;
@@ -261,68 +268,6 @@ em {
 .feature-copy .text-link {
   display: inline-block;
   margin-top: 2rem;
-}
-
-.feature-visual {
-  align-self: stretch;
-  min-height: 390px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  border: 1px solid var(--border);
-  background: #fff;
-  padding: clamp(1.2rem, 3vw, 2rem);
-}
-
-.feature-visual > p {
-  color: var(--muted);
-  font-size: 0.85rem;
-}
-
-.architecture {
-  display: grid;
-  gap: 0;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.architecture li {
-  position: relative;
-  display: grid;
-  grid-template-columns: 7rem minmax(0, 1fr);
-  gap: 1rem;
-  align-items: center;
-  min-height: 4.25rem;
-  border-top: 1px solid var(--border);
-  color: var(--ink);
-}
-
-.architecture li:last-child {
-  border-bottom: 1px solid var(--border);
-}
-
-.architecture li span {
-  color: var(--accent);
-  font-size: 0.72rem;
-  font-weight: 680;
-  letter-spacing: 0.08em;
-}
-
-.architecture li strong {
-  font-size: 1rem;
-  font-weight: 520;
-}
-
-.architecture li:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  bottom: -0.55rem;
-  left: 3.1rem;
-  width: 1px;
-  height: 1.1rem;
-  background: #c7c1b7;
-  z-index: 1;
 }
 
 .project-grid {
@@ -337,7 +282,7 @@ em {
   display: grid;
   grid-template-columns: 3rem minmax(0, 1fr) auto;
   gap: 1rem;
-  min-height: 18rem;
+  min-height: 15.5rem;
   padding: 1.45rem 1.2rem 1.35rem 0;
   border-bottom: 1px solid var(--border);
 }
@@ -445,13 +390,13 @@ a.project-card:hover h3 {
 }
 
 .toolkit {
-  padding-block: clamp(3.9rem, 8.5vw, 7.2rem);
+  padding-block: clamp(3.4rem, 7vw, 5.9rem);
 }
 
 .toolkit-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1.2rem;
+  gap: clamp(1.6rem, 4vw, 4.25rem);
 }
 
 .toolkit-grid > div {
@@ -469,7 +414,7 @@ a.project-card:hover h3 {
 
 .contact {
   max-width: 900px;
-  min-height: 58vh;
+  min-height: 44vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -499,16 +444,11 @@ a.project-card:hover h3 {
   }
 
   a.project-card,
-  .feature-visual,
-  .architecture li {
+  .project-card h3 {
     transition:
       background-color 180ms ease,
       transform 180ms ease,
       color 180ms ease;
-  }
-
-  .feature-visual:hover .architecture li {
-    transform: translateX(1px);
   }
 }
 
@@ -524,7 +464,6 @@ a.project-card:hover h3 {
 }
 
 @media (max-width: 900px) {
-  .featured-project,
   .about-layout,
   .toolkit-grid {
     grid-template-columns: 1fr;
@@ -542,9 +481,8 @@ a.project-card:hover h3 {
     padding-left: 0;
   }
 
-  .feature-visual {
-    min-height: auto;
-    gap: 2rem;
+  .toolkit-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -562,7 +500,7 @@ a.project-card:hover h3 {
 
   .hero {
     min-height: auto;
-    padding-block: 5rem 6rem;
+    padding-block: 4.5rem 5rem;
   }
 
   h1 {
@@ -570,7 +508,7 @@ a.project-card:hover h3 {
   }
 
   .section {
-    padding-block: 4.5rem;
+    padding-block: 3.7rem;
   }
 
   .section-heading,
@@ -583,15 +521,8 @@ a.project-card:hover h3 {
     grid-template-columns: 1fr;
   }
 
-  .architecture li {
+  .toolkit-grid {
     grid-template-columns: 1fr;
-    gap: 0.2rem;
-    min-height: 4rem;
-    padding-block: 0.8rem;
-  }
-
-  .architecture li:not(:last-child)::after {
-    left: 0.2rem;
   }
 
   .footer {
