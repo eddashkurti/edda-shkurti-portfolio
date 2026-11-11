@@ -30,4 +30,6 @@ footer { display:flex; justify-content:space-between; gap:1rem; padding:1.5rem c
  .project-card h3 { margin-top:2.5rem; font-size:clamp(2rem,3.2vw,3.6rem); }
  .project-card>p { max-width:34rem; font-size:1rem; }
  .project-grid { gap:1.25rem; }
+ .hero { padding-inline:clamp(1.2rem,4vw,4.5rem) !important; }
+ .hero-topline,.hero-grid,.hero-footer { width:min(100%,1400px); margin-inline:auto; }
  @media (max-width:850px) { .featured-pair { grid-template-columns:1fr; } }
