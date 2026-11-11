@@ -24,7 +24,7 @@ footer { display:flex; justify-content:space-between; gap:1rem; padding:1.5rem c
  .work { padding-inline:clamp(1.2rem,4vw,4.5rem) !important; }
  .hero::after { display:none !important; }
  .hero:has(.hero-note:hover)::before { opacity:.17; background-image:linear-gradient(rgba(233,232,224,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(233,232,224,.12) 1px,transparent 1px); }
- .cursor-grid-glow { position:absolute; z-index:0; left:var(--pointer-x,50%); top:var(--pointer-y,45%); width:19rem; height:12rem; transform:translate(-50%,-50%); pointer-events:none; opacity:var(--pointer-opacity,0); transition:opacity .25s ease; background-image:linear-gradient(rgba(216,255,62,.2) 1px,transparent 1px),linear-gradient(90deg,rgba(216,255,62,.2) 1px,transparent 1px); background-size:4rem 4rem; mask-image:radial-gradient(ellipse at center,black 0%,rgba(0,0,0,.65) 38%,transparent 75%); -webkit-mask-image:radial-gradient(ellipse at center,black 0%,rgba(0,0,0,.65) 38%,transparent 75%); }
+ .cursor-grid-glow { position:absolute; z-index:0; left:var(--pointer-x,50%); top:var(--pointer-y,45%); width:24rem; height:9rem; transform:translate(-50%,-50%) rotate(-8deg); pointer-events:none; opacity:var(--pointer-opacity,0); transition:opacity .25s ease, left .4s cubic-bezier(.2,.8,.2,1), top .4s cubic-bezier(.2,.8,.2,1); background:radial-gradient(ellipse at center,rgba(216,255,62,.15) 0%,rgba(216,255,62,.07) 28%,rgba(216,255,62,.025) 52%,transparent 76%); filter:blur(9px); mix-blend-mode:screen; }
  .featured-pair .featured { min-height:31rem !important; }
  .featured-pair .feature-visual { font-size:clamp(2.4rem,6vw,6rem); opacity:.72; }
  .featured-pair .feature-copy h3 { font-size:clamp(2.5rem,4vw,4.8rem); }
