@@ -85,11 +85,14 @@ function HeroGridEffect() {
           const start = forceAt(x, y);
           const end = forceAt(x, Math.min(height, y + 16));
           const glow = Math.max(start.highlight, end.highlight);
-          context.strokeStyle = glow > 0.015 ? `rgba(216,255,62,${0.1 + glow * 0.38})` : "rgba(233,232,224,.09)";
-          context.beginPath();
-          context.moveTo(start.x, start.y);
-          context.lineTo(end.x, end.y);
-          context.stroke();
+          if (glow > 0.015) {
+            context.lineWidth = 1;
+            context.strokeStyle = `rgba(216,255,62,${0.1 + glow * 0.38})`;
+            context.beginPath();
+            context.moveTo(start.x, start.y);
+            context.lineTo(end.x, end.y);
+            context.stroke();
+          }
         }
       }
       for (let y = 0; y <= height; y += spacing) {
@@ -97,11 +100,14 @@ function HeroGridEffect() {
           const start = forceAt(x, y);
           const end = forceAt(Math.min(width, x + 16), y);
           const glow = Math.max(start.highlight, end.highlight);
-          context.strokeStyle = glow > 0.015 ? `rgba(216,255,62,${0.1 + glow * 0.38})` : "rgba(233,232,224,.09)";
-          context.beginPath();
-          context.moveTo(start.x, start.y);
-          context.lineTo(end.x, end.y);
-          context.stroke();
+          if (glow > 0.015) {
+            context.lineWidth = 1;
+            context.strokeStyle = `rgba(216,255,62,${0.1 + glow * 0.38})`;
+            context.beginPath();
+            context.moveTo(start.x, start.y);
+            context.lineTo(end.x, end.y);
+            context.stroke();
+          }
         }
       }
       frame = requestAnimationFrame(draw);
