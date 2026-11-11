@@ -32,4 +32,5 @@ footer { display:flex; justify-content:space-between; gap:1rem; padding:1.5rem c
  .project-grid { gap:1.25rem; }
  .hero { padding-inline:clamp(1.2rem,4vw,4.5rem) !important; }
  .hero-topline,.hero-grid,.hero-footer { width:min(100%,1400px); margin-inline:auto; }
+ @media (min-width:851px) { .hero-grid { transform:translateX(-3rem); } }
  @media (max-width:850px) { .featured-pair { grid-template-columns:1fr; } }
