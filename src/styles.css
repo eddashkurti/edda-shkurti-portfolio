@@ -32,5 +32,8 @@ footer { display:flex; justify-content:space-between; gap:1rem; padding:1.5rem c
  .project-grid { gap:1.25rem; }
  .hero { padding-inline:clamp(1.2rem,4vw,4.5rem) !important; }
  .hero-topline,.hero-grid,.hero-footer { width:min(100%,1400px); margin-inline:auto; }
- @media (min-width:851px) { .hero-grid { transform:translateX(-3rem); } }
+ .hero::after { content:""; position:absolute; z-index:0; top:24%; right:10%; width:52%; height:58%; pointer-events:none; background:radial-gradient(circle at 50% 50%, rgba(216,255,62,.16), transparent 45%); opacity:0; transition:opacity .35s ease; }
+ .hero:has(.hero-note:hover)::after { opacity:1; }
+ .hero:has(.hero-note:hover)::before { opacity:.34; background-image:linear-gradient(rgba(216,255,62,.2) 1px,transparent 1px),linear-gradient(90deg,rgba(216,255,62,.2) 1px,transparent 1px); }
+ @media (min-width:851px) { .hero-grid { transform:translateX(-5rem); } .hero-orbit { right:8vw; } }
  @media (max-width:850px) { .featured-pair { grid-template-columns:1fr; } }
