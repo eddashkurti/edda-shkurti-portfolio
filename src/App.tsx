@@ -15,6 +15,8 @@ const navItems = [
   { label: "Contact", href: "#contact" },
 ];
 
+const currentYear = new Date().getFullYear();
+
 function ExternalLink({ href, children, ariaLabel }: { href: string; children: ReactNode; ariaLabel?: string }) {
   const isExternal = href.startsWith("http");
 
@@ -52,6 +54,9 @@ function ChapterLabel({ kicker, title }: { kicker: string; title: string }) {
 function Header() {
   return (
     <header className="site-header">
+      <a className="skip-link" href="#top">
+        Skip to content
+      </a>
       <a className="brand" href="#top" aria-label="Edda Shkurti home">
         Edda.
       </a>
@@ -189,7 +194,7 @@ function Experience() {
           <h3>{experience.role}</h3>
           <p>{experience.company}</p>
         </div>
-        <time>{experience.year}</time>
+        <time dateTime={experience.year}>{experience.year}</time>
         <p>{experience.description}</p>
         <ul>
           {experience.highlights.map((item) => (
@@ -272,8 +277,8 @@ function Contact() {
 function Footer() {
   return (
     <footer className="footer">
-      <span>© 2026 Edda Shkurti</span>
-      <span>Kosovo · 2026</span>
+      <span>© {currentYear} Edda Shkurti</span>
+      <span>Kosovo · {currentYear}</span>
     </footer>
   );
 }
@@ -282,7 +287,7 @@ export default function App() {
   return (
     <>
       <Header />
-      <main id="top">
+      <main id="top" tabIndex={-1}>
         <Hero />
         <Work />
         <Experience />
