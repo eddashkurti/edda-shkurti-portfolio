@@ -20,4 +20,14 @@ footer { display:flex; justify-content:space-between; gap:1rem; padding:1.5rem c
 .featured-pair .feature-copy h3 { max-width:20rem; font-size:clamp(2.5rem,4.2vw,5rem); }
 .featured-pair .feature-signal { margin-top:1.5rem; justify-self:start; text-align:left; }
  .hero,.section { padding-inline:clamp(1.2rem,4vw,4.5rem); }
+ .hero,.about,.toolkit,.contact { padding-inline:max(clamp(1.2rem,4vw,4.5rem),calc((100vw - 1240px)/2 + clamp(1.2rem,4vw,4.5rem))) !important; }
+ .work { padding-inline:clamp(1.2rem,4vw,4.5rem) !important; }
+ .featured-pair .featured { min-height:31rem !important; }
+ .featured-pair .feature-visual { font-size:clamp(2.4rem,6vw,6rem); opacity:.72; }
+ .featured-pair .feature-copy h3 { font-size:clamp(2.5rem,4vw,4.8rem); }
+ .project-card { min-height:23rem !important; background:linear-gradient(135deg,#deddd5 0%,#d5d4cc 100%); }
+ .project-card::after { content:""; position:absolute; right:2rem; bottom:2rem; width:4.5rem; height:4.5rem; border:1px solid var(--accent,var(--lime)); border-radius:50%; opacity:.55; }
+ .project-card h3 { margin-top:2.5rem; font-size:clamp(2rem,3.2vw,3.6rem); }
+ .project-card>p { max-width:34rem; font-size:1rem; }
+ .project-grid { gap:1.25rem; }
  @media (max-width:850px) { .featured-pair { grid-template-columns:1fr; } }
