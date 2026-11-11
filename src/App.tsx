@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { dataProjects, featuredDataProject, featuredProject, profile, softwareProjects, toolkit } from "./content";
 
 const currentYear = new Date().getFullYear();
@@ -13,8 +14,111 @@ function Header() {
   </header>;
 }
 
+function HeroGridEffect() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const hero = canvas?.parentElement;
+    if (!canvas || !hero) return;
+    const context = canvas.getContext("2d");
+    if (!context) return;
+
+    type Ripple = { x: number; y: number; born: number };
+    const ripples: Ripple[] = [];
+    let width = 0;
+    let height = 0;
+    let lastX = -1000;
+    let lastY = -1000;
+    let frame = 0;
+
+    const resize = () => {
+      const ratio = window.devicePixelRatio || 1;
+      width = hero.clientWidth;
+      height = hero.clientHeight;
+      canvas.width = width * ratio;
+      canvas.height = height * ratio;
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+      context.setTransform(ratio, 0, 0, ratio, 0, 0);
+    };
+
+    const addRipple = (event: PointerEvent) => {
+      const bounds = hero.getBoundingClientRect();
+      const x = event.clientX - bounds.left;
+      const y = event.clientY - bounds.top;
+      if (Math.hypot(x - lastX, y - lastY) < 34) return;
+      lastX = x;
+      lastY = y;
+      ripples.push({ x, y, born: performance.now() });
+      if (ripples.length > 5) ripples.shift();
+    };
+
+    const draw = (now: number) => {
+      context.clearRect(0, 0, width, height);
+      const spacing = 80;
+      const alive = ripples.filter((ripple) => now - ripple.born < 2600);
+      ripples.splice(0, ripples.length, ...alive);
+
+      const forceAt = (x: number, y: number) => {
+        let displacementX = 0;
+        let displacementY = 0;
+        let highlight = 0;
+        for (const ripple of ripples) {
+          const age = (now - ripple.born) / 1000;
+          const distance = Math.hypot(x - ripple.x, y - ripple.y);
+          const radius = age * 185;
+          const ring = Math.exp(-((distance - radius) ** 2) / 900) * Math.max(0, 1 - age / 2.6);
+          const wave = Math.sin(distance * 0.12 - age * 11) * ring;
+          const directionX = distance ? (x - ripple.x) / distance : 0;
+          const directionY = distance ? (y - ripple.y) / distance : 0;
+          displacementX += directionX * wave * 9;
+          displacementY += directionY * wave * 9;
+          highlight += ring;
+        }
+        return { x: x + displacementX, y: y + displacementY, highlight: Math.min(1, highlight) };
+      };
+
+      context.lineWidth = 1;
+      for (let x = 0; x <= width; x += spacing) {
+        for (let y = 0; y < height; y += 16) {
+          const start = forceAt(x, y);
+          const end = forceAt(x, Math.min(height, y + 16));
+          const glow = Math.max(start.highlight, end.highlight);
+          context.strokeStyle = glow > 0.015 ? `rgba(216,255,62,${0.1 + glow * 0.38})` : "rgba(233,232,224,.09)";
+          context.beginPath();
+          context.moveTo(start.x, start.y);
+          context.lineTo(end.x, end.y);
+          context.stroke();
+        }
+      }
+      for (let y = 0; y <= height; y += spacing) {
+        for (let x = 0; x < width; x += 16) {
+          const start = forceAt(x, y);
+          const end = forceAt(Math.min(width, x + 16), y);
+          const glow = Math.max(start.highlight, end.highlight);
+          context.strokeStyle = glow > 0.015 ? `rgba(216,255,62,${0.1 + glow * 0.38})` : "rgba(233,232,224,.09)";
+          context.beginPath();
+          context.moveTo(start.x, start.y);
+          context.lineTo(end.x, end.y);
+          context.stroke();
+        }
+      }
+      frame = requestAnimationFrame(draw);
+    };
+
+    resize();
+    window.addEventListener("resize", resize);
+    hero.addEventListener("pointermove", addRipple);
+    frame = requestAnimationFrame(draw);
+    return () => { cancelAnimationFrame(frame); window.removeEventListener("resize", resize); hero.removeEventListener("pointermove", addRipple); };
+  }, []);
+
+  return <canvas className="hero-grid-canvas" aria-hidden="true" />;
+}
+
 function Hero() {
-  return <section className="hero" id="top" onPointerMove={(event) => { const rect = event.currentTarget.getBoundingClientRect(); event.currentTarget.style.setProperty("--pointer-x", `${event.clientX - rect.left}px`); event.currentTarget.style.setProperty("--pointer-y", `${event.clientY - rect.top}px`); event.currentTarget.style.setProperty("--pointer-opacity", "1"); }} onPointerLeave={(event) => event.currentTarget.style.setProperty("--pointer-opacity", "0")}><div className="cursor-grid-glow" aria-hidden="true" /><div className="hero-orbit" aria-hidden="true"><span>DATA</span><span>DESIGN</span><span>SYSTEMS</span></div><div className="hero-topline"><span>PORTFOLIO / 2026</span><span>{profile.location}</span></div><div className="hero-grid"><div className="hero-title-wrap"><p className="eyebrow">{profile.role}</p><h1>Systems<br /><i>with a pulse.</i></h1></div><div className="hero-note"><span className="note-index">↳ 00</span><p>I design the connective tissue between raw data, useful software, and the people who need to trust it.</p><a href="#work">Enter the archive <Arrow /></a></div></div><div className="hero-footer"><span>SCROLL TO EXPLORE</span><span className="scroll-line" aria-hidden="true" /></div></section>;
+  return <section className="hero" id="top"><HeroGridEffect /><div className="hero-orbit" aria-hidden="true"><span>DATA</span><span>DESIGN</span><span>SYSTEMS</span></div><div className="hero-topline"><span>PORTFOLIO / 2026</span><span>{profile.location}</span></div><div className="hero-grid"><div className="hero-title-wrap"><p className="eyebrow">{profile.role}</p><h1>Systems<br /><i>with a pulse.</i></h1></div><div className="hero-note"><span className="note-index">↳ 00</span><p>I design the connective tissue between raw data, useful software, and the people who need to trust it.</p><a href="#work">Enter the archive <Arrow /></a></div></div><div className="hero-footer"><span>SCROLL TO EXPLORE</span><span className="scroll-line" aria-hidden="true" /></div></section>;
 }
 
 function Featured({ project, visual = "RAW" }: { project: typeof featuredProject; visual?: string }) {
