@@ -248,6 +248,18 @@ h2 i {
   font-weight: 600;
 }
 
+.project-card .card-actions a {
+  color: var(--lime);
+  background: var(--ink);
+  padding: .4rem .7rem;
+  transition: background .2s, color .2s;
+}
+
+.project-card .card-actions a:hover {
+  background: var(--lime);
+  color: var(--ink);
+}
+
 .arrow {
   margin-left: .35rem;
   color: var(--lime);
