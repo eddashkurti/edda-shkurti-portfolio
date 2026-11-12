@@ -1919,3 +1919,29 @@ footer {
   text-align: center;
   letter-spacing: .05em;
 }
+
+/* ==========================================================
+   CONTACT TOP LABELS (desktop): 05 left, ONLINE / AVAILABLE far right
+========================================================== */
+
+@media (min-width: 851px) {
+  .contact > .contact-kicker {
+    position: absolute !important;
+    top: 2.5rem;
+    left: clamp(1.2rem, 4vw, 4.5rem);
+    right: clamp(1.2rem, 4vw, 4.5rem);
+    justify-content: space-between !important;
+    gap: 0;
+    z-index: 2;
+  }
+}
+
+
+.contact {
+  padding-top: 6rem !important;
+  padding-bottom: 6rem !important;
+}
+
+.contact h2 {
+  margin-top: 8rem;
+}
