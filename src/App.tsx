@@ -79,7 +79,7 @@ function HeroSvgGrid() {
 /* ------------------------------------------------------------------ */
 
 function Hero() {
-  return <section className="hero" id="top"><HeroSvgGrid /><div className="hero-topline"><span>PORTFOLIO / 2026</span><span>{profile.location}</span></div><div className="hero-grid"><div className="hero-title-wrap"><p className="eyebrow">{profile.role}</p><h1>Systems<br /><i>with a pulse.</i></h1></div><div className="hero-note"><span className="note-index">↳ 00</span><p>I design the connective tissue between raw data, useful software, and the people who need to trust it.</p><a href="#work">Enter the archive <Arrow /></a></div></div><div className="hero-orbit-3d" aria-hidden="true"><ThreeScene kind="orbit" /></div><div className="hero-footer"><span>SCROLL TO EXPLORE</span><span className="scroll-line" aria-hidden="true" /></div></section>;
+  return <section className="hero" id="top"><HeroSvgGrid /><div className="hero-topline"><span>PORTFOLIO / 2026</span><span>{profile.location}</span></div><div className="hero-grid"><div className="hero-title-wrap"><p className="eyebrow">{profile.role}</p><h1>Systems<br /><i>with a<br className="pulse-break" /> pulse.</i></h1></div><div className="hero-note"><span className="note-index">↳ 00</span><p>I design the connective tissue between raw data, useful software, and the people who need to trust it.</p><a href="#work">Enter the archive <Arrow /></a></div></div><div className="hero-orbit-3d" aria-hidden="true"><ThreeScene kind="orbit" /></div><div className="hero-footer"><span>SCROLL TO EXPLORE</span><span className="scroll-line" aria-hidden="true" /></div></section>;
 }
 
 /* ------------------------------------------------------------------ */

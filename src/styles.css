@@ -1803,3 +1803,119 @@ footer {
 
   .hero .hero-footer { order: 4; }
 }
+
+/* ==========================================================
+   HERO SPHERE ON PHONES: anchored bottom-right, grows up and left
+========================================================== */
+
+@media (max-width: 850px) {
+  .hero .hero-orbit-3d {
+    position: relative !important;
+    align-self: flex-end !important;
+    width: 8rem !important;
+    height: 6rem !important;
+    margin: 0 1rem 0 0 !important;
+    transform: none !important;
+  }
+
+  .hero .hero-orbit-3d > div {
+    position: absolute !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 12rem !important;
+    height: 12rem !important;
+  }
+
+  .hero .hero-orbit-3d canvas {
+    width: 100% !important;
+    height: 100% !important;
+  }
+}
+
+/* ==========================================================
+   HERO ON PHONES: smaller headline, divider line moved up
+========================================================== */
+
+@media (max-width: 850px) {
+  .hero h1 {
+    font-size: clamp(3.4rem, 15vw, 5rem) !important;
+  }
+
+  .hero .hero-note {
+    margin-top: -1.5rem !important;
+  }
+}
+
+/* ==========================================================
+   HERO HEADLINE: "pulse." on its own row on phones only
+========================================================== */
+
+.pulse-break {
+  display: none;
+}
+
+@media (max-width: 850px) {
+  .pulse-break {
+    display: inline;
+  }
+}
+
+/* ==========================================================
+   ABOUT ON PHONES: stamp on the right, same row as the heading
+========================================================== */
+
+@media (max-width: 850px) {
+  .about .section-intro {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    column-gap: 1rem;
+    align-items: end;
+  }
+
+  .about .section-intro > .eyebrow {
+    grid-column: 1 / -1;
+  }
+
+  .about .section-intro > h2 {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .about .about-stamp-left {
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: end;
+    align-self: end;
+    width: 5.5rem;
+    height: 5.5rem;
+    margin: 0 !important;
+    font-size: 1.6rem;
+  }
+
+  .about .about-stamp-left span {
+    font-size: .4rem;
+  }
+}
+
+/* ==========================================================
+   ABOUT STAMP: center ES and BUILD / LEARN / REPEAT inside the circle
+========================================================== */
+
+.about .about-stamp,
+.about .about-stamp-left {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: .9;
+}
+
+.about .about-stamp span,
+.about .about-stamp-left span {
+  display: block;
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  letter-spacing: .05em;
+}
