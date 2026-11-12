@@ -1687,3 +1687,119 @@ footer {
     margin: 2rem auto 0 !important;
   }
 }
+
+/* ==========================================================
+   HERO ON PHONES: no hover effects, clean background
+========================================================== */
+
+/* Hover-only effects: only on devices with a real mouse */
+@media (hover: hover) and (pointer: fine) {
+  .hero:has(.hero-note:hover)::before,
+  .hero:has(.hero-note:hover)::after {
+    opacity: revert;
+  }
+}
+
+@media (max-width: 850px) {
+  /* Remove the stretched SVG grid and its pointer-driven wave */
+  .hero-grid-svg {
+    display: none !important;
+  }
+
+  /* Keep the simple background grid, but calmer */
+  .hero::before {
+    opacity: .15 !important;
+  }
+
+  /* Kill the glow that sticks after a tap */
+  .hero::after {
+    display: none !important;
+  }
+
+  /* Keep the footer line from floating over the note */
+  .hero {
+    min-height: auto;
+    padding-bottom: 3rem;
+  }
+}
+
+/* ==========================================================
+   HERO ON PHONES: sphere between title and description
+========================================================== */
+
+@media (max-width: 850px) {
+  .hero .hero-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+    transform: none !important;
+  }
+
+  .hero .hero-grid .hero-orbit-3d {
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    left: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    align-self: flex-end !important;
+    width: 7rem !important;
+    height: 7rem !important;
+    margin: 0 .5rem 0 0 !important;
+    pointer-events: none;
+  }
+}
+
+/* ==========================================================
+   HERO SPHERE: desktop position restored, phone order fixed
+========================================================== */
+
+/* Desktop: the big orbit on the right, as before */
+.hero .hero-orbit-3d {
+  position: absolute;
+  right: 4vw;
+  top: 20%;
+  width: clamp(18rem, 36vw, 43rem);
+  height: clamp(18rem, 36vw, 43rem);
+  margin: 0;
+  transform: none;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Phone: stack title, sphere, description in order */
+@media (max-width: 850px) {
+  .hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 1.5rem;
+  }
+
+  .hero .hero-grid {
+    display: contents !important;
+  }
+
+  .hero .hero-topline { order: 0; }
+  .hero .hero-title-wrap { order: 1; }
+
+  .hero .hero-orbit-3d {
+    order: 2;
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    align-self: flex-end;
+    width: 15rem !important;
+    height: 15rem !important;
+    margin: 0 1rem 0 0 !important;
+    opacity: 1 !important;
+  }
+
+  .hero .hero-note {
+    order: 3;
+    max-width: 100%;
+    margin-top: 0;
+  }
+
+  .hero .hero-footer { order: 4; }
+}
