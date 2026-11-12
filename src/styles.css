@@ -1,4 +1,3 @@
-
 /* ==========================================================
    FONTS
 ========================================================== */
@@ -22,7 +21,7 @@
   --violet: #a88cff;
   --cyan: #72f2df;
 
-  font-family: 'Space Grotesk',system-ui,sans-serif;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
   color: var(--paper);
   background: var(--ink);
   font-synthesis: none;
@@ -32,7 +31,7 @@
 
 
 /* ==========================================================
-   GLOBAL STYLES
+   GLOBAL
 ========================================================== */
 
 * {
@@ -97,11 +96,11 @@ a:focus-visible {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 1.2rem clamp(1.2rem,4vw,4.5rem);
+  padding: 1.2rem clamp(1.2rem, 4vw, 4.5rem);
   border-bottom: 1px solid var(--line);
   background: rgba(16,18,24,.78);
   backdrop-filter: blur(16px);
-  font-family: 'DM Mono',monospace;
+  font-family: 'DM Mono', monospace;
   font-size: .68rem;
   letter-spacing: .06em;
 }
@@ -122,7 +121,7 @@ a:focus-visible {
 
 nav {
   display: flex;
-  gap: clamp(.7rem,2.5vw,2rem);
+  gap: clamp(.7rem, 2.5vw, 2rem);
   align-items: center;
   color: var(--muted);
 }
@@ -137,66 +136,34 @@ nav a span {
 
 
 /* ==========================================================
-   HERO SECTION
+   SHARED LAYOUT
 ========================================================== */
 
 .hero,
 .section {
-  padding-inline: max(
-    clamp(1.2rem,4vw,4.5rem),
-    calc((100vw - 1240px)/2 + clamp(1.2rem,4vw,4.5rem))
-  );
+  padding-inline: clamp(1.2rem, 4vw, 4.5rem);
 }
 
-.hero {
-  position: relative;
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding-top: 8rem;
-  padding-bottom: 2rem;
-  overflow: hidden;
-  background: var(--ink);
+.section {
+  padding-top: clamp(6rem, 11vw, 11rem);
+  padding-bottom: clamp(6rem, 11vw, 11rem);
 }
 
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  opacity: .17;
-  background-image:
-    linear-gradient(rgba(233,232,224,.12) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(233,232,224,.12) 1px,transparent 1px);
-  background-size: 5rem 5rem;
-  mask-image: linear-gradient(to bottom,black,transparent 80%);
+.arrow {
+  margin-left: .35rem;
+  color: var(--lime);
+  transition: transform .2s;
+  display: inline-block;
 }
 
-.hero-topline,
-.hero-footer,
-.contact-kicker {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  justify-content: space-between;
-  font: 500 .68rem 'DM Mono',monospace;
-  letter-spacing: .08em;
-  color: var(--muted);
-}
-
-.hero-grid {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: minmax(0,1fr) minmax(16rem,.3fr);
-  gap: clamp(2rem,8vw,8rem);
-  align-items: end;
+a:hover .arrow {
+  transform: translate(.25rem, -.25rem);
 }
 
 .eyebrow {
   margin: 0 0 1.1rem;
   color: var(--lime);
-  font: 500 .7rem 'DM Mono',monospace;
+  font: 500 .7rem 'DM Mono', monospace;
   letter-spacing: .08em;
   text-transform: uppercase;
 }
@@ -208,163 +175,26 @@ p {
   margin: 0;
 }
 
-h1 {
-  max-width: 950px;
-  font-size: clamp(4.5rem,12vw,11rem);
-  font-weight: 600;
-  letter-spacing: -.09em;
-  line-height: .78;
-}
-
 h1 i,
 h2 i {
-  font-family: Georgia,serif;
+  font-family: Georgia, serif;
   font-weight: 400;
   letter-spacing: -.08em;
 }
 
-.hero-note {
-  max-width: 19rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--line);
-  color: var(--muted);
-  line-height: 1.55;
-}
-
-.note-index {
-  display: block;
-  margin-bottom: 1.4rem;
-  color: var(--orange);
-  font: 500 .75rem 'DM Mono',monospace;
-}
-
-.hero-note a,
-.button-link,
-.card-actions a,
-.contact-links a {
-  display: inline-block;
-  margin-top: 1.5rem;
-  color: var(--paper);
-  font-weight: 600;
-}
-
-.project-card .card-actions a {
-  color: var(--lime);
-  background: var(--ink);
-  padding: .4rem .7rem;
-  transition: background .2s, color .2s;
-}
-
-.project-card .card-actions a:hover {
-  background: var(--lime);
-  color: var(--ink);
-}
-
-.arrow {
-  margin-left: .35rem;
-  color: var(--lime);
-  transition: transform .2s;
-  display: inline-block;
-}
-
-a:hover .arrow {
-  transform: translate(.25rem,-.25rem);
-}
-
-.scroll-line {
-  width: 9rem;
-  height: 1px;
-  margin-left: 1rem;
-  background: var(--line);
-}
-
-
-/* ==========================================================
-   HERO ORBIT
-========================================================== */
-
-.hero-orbit {
-  position: absolute;
-  right: 5vw;
-  top: 32%;
-  width: clamp(11rem,25vw,23rem);
-  height: clamp(11rem,25vw,23rem);
-  border: 1px solid var(--line);
-  border-radius: 50%;
-  color: var(--muted);
-  font: 500 .6rem 'DM Mono',monospace;
-  animation: spin 28s linear infinite;
-}
-
-.hero-orbit::before,
-.hero-orbit::after {
-  content: '';
-  position: absolute;
-  inset: 10%;
-  border: 1px solid var(--line);
-  border-radius: 50%;
-}
-
-.hero-orbit::after {
-  inset: 45%;
-  background: var(--lime);
-  border: 0;
-  box-shadow: 0 0 2rem var(--lime);
-}
-
-.hero-orbit span {
-  position: absolute;
-}
-
-.hero-orbit span:nth-child(1) {
-  top: 4%;
-  left: 45%;
-}
-
-.hero-orbit span:nth-child(2) {
-  right: -2%;
-  top: 48%;
-}
-
-.hero-orbit span:nth-child(3) {
-  bottom: 5%;
-  left: 27%;
-}
-
-
-/* ==========================================================
-   GENERAL SECTIONS
-========================================================== */
-
-.section {
-  padding-top: clamp(6rem,11vw,11rem);
-  padding-bottom: clamp(6rem,11vw,11rem);
-}
-
-.work {
-  background: var(--paper);
-  color: var(--ink);
-}
-
 .section-intro {
   display: grid;
-  grid-template-columns: minmax(15rem,.7fr) minmax(0,1fr) minmax(15rem,.7fr);
+  grid-template-columns: minmax(15rem, .7fr) minmax(0, 1fr) minmax(15rem, .7fr);
   gap: 2rem;
   align-items: start;
-  margin-bottom: clamp(3rem,7vw,7rem);
+  margin-bottom: clamp(3rem, 7vw, 7rem);
 }
 
 .section-intro h2 {
-  font-size: clamp(3.5rem,8vw,8rem);
+  font-size: clamp(3.5rem, 8vw, 8rem);
   font-weight: 600;
   letter-spacing: -.09em;
   line-height: .8;
-}
-
-.work .section-intro .eyebrow,
-.about .eyebrow,
-.toolkit .eyebrow {
-  color: var(--orange);
 }
 
 .section-copy {
@@ -375,225 +205,577 @@ a:hover .arrow {
 
 
 /* ==========================================================
-   FEATURED PROJECTS
+   HERO
 ========================================================== */
 
-.featured {
+.hero {
   position: relative;
-  display: grid;
-  grid-template-columns: minmax(0,1.2fr) minmax(15rem,.8fr);
-  min-height: 35rem;
-  margin-bottom: 1rem;
-  padding: clamp(1.5rem,4vw,4rem);
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 8rem;
+  padding-bottom: 2rem;
+  padding-inline: clamp(1.2rem, 4vw, 4.5rem) !important;
   overflow: hidden;
+  background: var(--ink);
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: .24;
+  background-image:
+    linear-gradient(rgba(233,232,224,.14) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(233,232,224,.14) 1px, transparent 1px);
+  background-size: 5rem 5rem;
+  mask-image: linear-gradient(to bottom, black, transparent 80%);
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: 24%;
+  right: 10%;
+  width: 52%;
+  height: 58%;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 50%, rgba(216,255,62,.16), transparent 45%);
+  opacity: 0;
+  transition: opacity .35s ease;
+}
+
+.hero:has(.hero-note:hover)::after {
+  opacity: 1;
+}
+
+.hero:has(.hero-note:hover)::before {
+  opacity: .34;
+  background-image:
+    linear-gradient(rgba(216,255,62,.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(216,255,62,.2) 1px, transparent 1px);
+}
+
+.hero-topline,
+.hero-footer,
+.contact-kicker {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  font: 500 .68rem 'DM Mono', monospace;
+  letter-spacing: .08em;
+  color: var(--muted);
+}
+
+.hero-topline,
+.hero-grid,
+.hero-footer {
+  width: min(100%, 1400px);
+  margin-inline: auto;
+}
+
+.hero-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(2rem, 8vw, 8rem);
+  align-items: end;
+}
+
+h1 {
+  max-width: 950px;
+  font-size: clamp(4.5rem, 12vw, 11rem);
+  font-weight: 600;
+  letter-spacing: -.09em;
+  line-height: .78;
+}
+
+.hero-note {
+  justify-self: start;
+  max-width: 19rem;
+  margin-top: 2.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.note-index {
+  display: block;
+  margin-bottom: 1.4rem;
+  color: var(--orange);
+  font: 500 .75rem 'DM Mono', monospace;
+}
+
+.scroll-line {
+  width: 9rem;
+  height: 1px;
+  margin-left: 1rem;
+  background: var(--line);
+}
+
+.hero-grid-svg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.hero-svg-base {
+  fill: none;
+  stroke: rgba(233,232,224,.13);
+  stroke-width: 1;
+}
+
+.hero-svg-wave {
+  fill: none;
+  stroke: rgba(216,255,62,.7);
+  stroke-width: 1.5;
+  filter: drop-shadow(0 0 6px rgba(216,255,62,.4));
+}
+
+.hero-orbit-3d {
+  position: absolute;
+  right: 4vw;
+  top: 20%;
+  width: clamp(18rem, 36vw, 43rem);
+  height: clamp(18rem, 36vw, 43rem);
+  pointer-events: none;
+  z-index: 1;
+}
+.hero-orbit-3d canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.hero-note a,
+.button-link,
+.contact-links a {
+  display: inline-block;
+  margin-top: 1.5rem;
+  color: var(--paper);
+  font-weight: 600;
+}
+
+
+/* ==========================================================
+   SECTION DIVIDER WITH TRAVELLING PULSE
+========================================================== */
+
+.section-divider {
+  position: relative;
+  height: 1px;
+  margin-inline: clamp(1.2rem, 4vw, 4.5rem);
+  background: var(--line);
+  overflow: hidden;
+}
+
+.section-divider-pulse {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 14rem;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--lime), transparent);
+  box-shadow: 0 0 10px rgba(216, 255, 62, .6);
+  animation: divider-travel 5s linear infinite;
+}
+
+@keyframes divider-travel {
+  from { transform: translateX(-14rem); }
+  to   { transform: translateX(100vw); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+
+/* ==========================================================
+   FEATURED 3D SECTION (NovaCart and TechPoint)
+========================================================== */
+
+.featured-3d {
   background: var(--ink);
   color: var(--paper);
 }
 
-.feature-visual {
+.featured-3d .section-intro .eyebrow {
+  color: var(--lime);
+}
+
+.featured-3d-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.featured-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: #15171f;
+  border: 1px solid var(--line);
+}
+
+.featured-scene {
+  position: relative;
+  height: 20rem;
+  background: radial-gradient(circle at 50% 40%, rgba(216, 255, 62, .08), transparent 70%);
+}
+
+.featured-scene canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+.featured-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.featured-body h3 {
+  margin-top: .6rem;
+  font-size: clamp(2.2rem, 4vw, 3.6rem);
+  line-height: .9;
+  letter-spacing: -.07em;
+  color: var(--paper);
+}
+
+.featured-body > p:not(.eyebrow) {
+  margin-top: 1.2rem;
+  color: #fff;
+  line-height: 1.6;
+}
+
+.featured-body .tag-row {
+  margin-top: 1.3rem;
+}
+
+.featured-body .tag-row span:not(:last-child)::after {
+  content: '/';
+  margin-left: .9rem;
+  color: var(--pink);
+}
+
+.featured-body .card-actions {
+  display: flex;
+  gap: 1.4rem;
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+}
+
+.featured-body .card-actions a {
+  margin-top: 0;
+  color: var(--lime);
+  font-size: .85rem;
+}
+
+.featured-body .card-actions a .arrow {
+  color: var(--pink);
+}
+
+
+/* ==========================================================
+   WORK SECTION: layout
+========================================================== */
+
+.work {
+  padding-inline: clamp(1.2rem, 4vw, 4.5rem);
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.work-group + .work-group {
+  margin-top: clamp(4rem, 8vw, 7rem);
+}
+
+.work-label {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0 0 1.25rem;
+  padding-top: 1rem;
+  border-top: 2px solid var(--ink);
+  color: #656a72;
+  font: 500 .68rem 'DM Mono', monospace;
+  letter-spacing: .08em;
+}
+
+.work-label span:first-child {
+  color: var(--ink);
+}
+
+.work-row {
+  display: grid;
+  gap: 1.25rem;
+  align-items: stretch;
+}
+
+.data-row {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.software-row {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.work .section-intro .eyebrow {
+  color: var(--orange);
+}
+
+
+/* ==========================================================
+   WORK CARDS: shared structure
+========================================================== */
+
+.work .featured.data-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+  min-width: 0;
+  min-height: 30rem;
+  margin: 0;
+  padding: clamp(1.4rem, 2.6vw, 2.2rem);
+  overflow: hidden;
+  transition: transform .25s;
+}
+
+.work .featured.data-card:hover {
+  transform: translateY(-.35rem);
+}
+
+/* Big rotated words, centred in the card */
+.work .data-card .feature-visual {
   position: absolute;
   inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: clamp(1rem,3vw,3rem);
-  color: var(--lime);
-  font-size: clamp(3rem,10vw,10rem);
+  gap: clamp(.6rem, 2vw, 1.5rem);
+  padding: 0;
+  color: var(--orange);
+  font-size: clamp(2.6rem, 6vw, 6rem);
   font-weight: 700;
   letter-spacing: -.1em;
   opacity: .85;
   transform: rotate(-9deg);
 }
 
-.feature-visual span:nth-child(2) {
-  color: var(--orange);
-  font-family: Georgia,serif;
+.work .data-card .feature-visual span:nth-child(2) {
+  color: var(--lime) !important;
+  font-family: Georgia, serif;
   font-weight: 400;
 }
 
-.feature-grid {
+.work .data-card .feature-grid {
   position: absolute;
   inset: 0;
   opacity: .25;
   background:
-    linear-gradient(90deg,transparent 49%,var(--lime) 50%,transparent 51%),
-    linear-gradient(transparent 49%,var(--lime) 50%,transparent 51%);
+    linear-gradient(90deg, transparent 49%, var(--lime) 50%, transparent 51%),
+    linear-gradient(transparent 49%, var(--lime) 50%, transparent 51%);
   background-size: 4rem 4rem;
-  mask-image: radial-gradient(circle,black,transparent 60%);
+  mask-image: radial-gradient(circle, black, transparent 60%);
 }
 
-.feature-copy {
+.work .data-card .feature-signal {
   position: relative;
   z-index: 1;
-  align-self: end;
-  max-width: 32rem;
-}
-
-.feature-copy h3 {
-  max-width: 25rem;
-  font-size: clamp(2.8rem,6vw,6rem);
-  line-height: .85;
-  letter-spacing: -.08em;
-}
-
-.feature-copy>p:not(.eyebrow) {
-  margin-top: 1.5rem;
-  color: var(--muted);
-  line-height: 1.6;
-}
-
-.tag-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .45rem .9rem;
-  margin-top: 1.3rem;
-  font: 500 .65rem 'DM Mono',monospace;
-  color: var(--muted);
-  text-transform: uppercase;
-}
-
-.tag-row span:not(:last-child)::after {
-  content: '/';
-  margin-left: .9rem;
-  color: var(--lime);
-}
-
-.button-link {
-  padding-bottom: .35rem;
-  border-bottom: 1px solid var(--lime);
-}
-
-.feature-signal {
-  position: relative;
-  z-index: 1;
-  align-self: start;
+  grid-row: 1;
   justify-self: end;
+  align-self: start;
   display: grid;
-  gap: .5rem;
+  gap: .4rem;
+  margin: 0;
   text-align: right;
-  font-family: 'DM Mono',monospace;
+  font-family: 'DM Mono', monospace;
 }
 
-.feature-signal span,
-.feature-signal small {
-  color: var(--orange);
+.work .data-card .feature-signal span,
+.work .data-card .feature-signal small {
   font-size: .65rem;
 }
 
-.feature-signal strong {
-  font-size: clamp(.8rem,1.5vw,1rem);
+.work .data-card .feature-signal strong {
+  font-size: clamp(.8rem, 1.5vw, 1rem);
 }
 
-
-/* ==========================================================
-   PROJECT CARDS
-========================================================== */
-
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(2,minmax(0,1fr));
-  gap: 1rem;
-}
-
-.project-card {
+.work .data-card .feature-copy {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  min-height: 27rem;
-  padding: clamp(1.3rem,3vw,2.5rem);
-  background: #d9d8d1;
-  border-top: 4px solid var(--accent,var(--lime));
-  transition: transform .25s,background .25s;
+  z-index: 1;
+  grid-row: 2;
+  align-self: end;
+  max-width: none;
+  padding-top: 2rem;
 }
 
-.project-card:hover {
-  transform: translateY(-.35rem);
-  background: #f1f0e9;
+.work .data-card .feature-copy .eyebrow {
+  margin-bottom: .8rem;
 }
 
-.project-card.lime {
-  --accent: var(--lime);
+.work .data-card .feature-copy h3 {
+  max-width: 100%;
+  font-size: clamp(2.1rem, 3.4vw, 3.2rem);
+  line-height: .88;
+  letter-spacing: -.08em;
 }
 
-.project-card.orange {
-  --accent: var(--orange);
-}
-
-.project-card.blue {
-  --accent: var(--blue);
-}
-
-.project-card.pink {
-  --accent: var(--pink);
-}
-
-.project-card.violet {
-  --accent: var(--violet);
-}
-
-.project-card.cyan {
-  --accent: var(--cyan);
-}
-
-.card-top {
-  display: flex;
-  justify-content: space-between;
-  color: #6b7076;
-  font: 500 .65rem 'DM Mono',monospace;
-}
-
-.card-top span:first-child {
-  color: var(--ink);
-  font-size: 1.8rem;
-}
-
-.project-card h3 {
-  max-width: 20rem;
-  margin-top: 4rem;
-  font-size: clamp(1.8rem,3.5vw,3.3rem);
-  line-height: .9;
-  letter-spacing: -.07em;
-}
-
-.project-card>p {
-  max-width: 27rem;
+.work .data-card .feature-copy > p:not(.eyebrow) {
   margin-top: 1.2rem;
-  color: #656a72;
-  line-height: 1.5;
+  font-size: .95rem;
+  line-height: 1.6;
 }
 
-.project-card .tag-row {
-  margin-top: auto;
-  color: #656a72;
+.work .data-card .tag-row {
+  margin-top: 1.2rem;
+  color: var(--muted);
 }
 
-.card-actions {
+.work .tag-row span:not(:last-child)::after {
+  content: '/';
+  margin-left: .9rem;
+  color: var(--pink);
+}
+
+.work .data-card .card-actions {
   display: flex;
   gap: 1.4rem;
-  margin-top: 1.6rem;
-  border-top: 1px solid rgba(16,18,24,.18);
+  margin-top: 1.4rem;
+  padding-top: .8rem;
+  border-top: 1px solid rgba(233, 232, 224, .12);
 }
 
-.card-actions a {
-  margin-top: 1rem;
+.work .data-card .card-actions a {
+  margin-top: 0;
+  color: var(--lime);
   font-size: .85rem;
+  border-bottom: 1px solid var(--lime);
+  padding-bottom: .25rem;
+}
+
+.work .data-card .card-actions a .arrow {
+  color: var(--pink) !important;
 }
 
 
 /* ==========================================================
-   ABOUT SECTION
+   DARK DATA CARDS
+========================================================== */
+
+.work .featured.data-card.dark {
+  background: var(--ink);
+  color: var(--paper);
+  border-top: 1px solid rgba(233, 232, 224, .12);
+  border-bottom: 1px solid rgba(233, 232, 224, .12);
+}
+
+.work .featured.data-card.dark .eyebrow {
+  color: var(--lime);
+}
+
+.work .featured.data-card.dark .feature-copy > p:not(.eyebrow) {
+  color: #ffffff;
+}
+
+.work .featured.data-card.dark .feature-signal span,
+.work .featured.data-card.dark .feature-signal small {
+  color: var(--orange);
+}
+
+.work .featured.data-card.dark .feature-signal strong {
+  color: var(--paper);
+}
+
+
+/* ==========================================================
+   LIGHT SOFTWARE CARDS
+========================================================== */
+
+.work .featured.data-card.light {
+  background: #e6e5de;
+  color: var(--ink);
+  border-top: 1px solid rgba(16, 18, 24, .12);
+  border-bottom: 1px solid rgba(16, 18, 24, .12);
+}
+
+.work .featured.data-card.light .feature-visual {
+  color: var(--orange);
+}
+
+.work .featured.data-card.light .feature-grid {
+  background:
+    linear-gradient(90deg, transparent 49%, var(--orange) 50%, transparent 51%),
+    linear-gradient(transparent 49%, var(--orange) 50%, transparent 51%);
+  opacity: .3;
+}
+
+.work .featured.data-card.light .eyebrow {
+  color: var(--orange);
+}
+
+.work .featured.data-card.light .feature-copy > p:not(.eyebrow) {
+  color: #000000;
+}
+
+.work .featured.data-card.light .tag-row {
+  color: #656a72;
+}
+
+.work .featured.data-card.light .feature-signal span,
+.work .featured.data-card.light .feature-signal small {
+  color: var(--orange);
+}
+
+.work .featured.data-card.light .feature-signal strong {
+  color: var(--ink);
+}
+
+.work .featured.data-card.light .card-actions {
+  border-top: 1px solid rgba(16, 18, 24, .12);
+}
+
+.work .featured.data-card.light .card-actions a {
+  color: var(--ink);
+  border-bottom: 1px solid var(--orange);
+}
+
+
+/* ==========================================================
+   ABOUT
 ========================================================== */
 
 .about {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: clamp(3rem,8vw,8rem);
+  gap: clamp(3rem, 8vw, 8rem);
   background: var(--ink);
+  padding-inline: max(
+    clamp(1.2rem, 4vw, 4.5rem),
+    calc((100vw - 1240px)/2 + clamp(1.2rem, 4vw, 4.5rem))
+  ) !important;
 }
 
 .about .section-intro {
   display: block;
   margin: 0;
+}
+
+.about .eyebrow {
+  color: var(--orange);
 }
 
 .about-body {
@@ -610,7 +792,7 @@ a:hover .arrow {
 .about-body .about-lede {
   margin-bottom: 1.5rem;
   color: var(--paper);
-  font-size: clamp(1.3rem,2.5vw,2.1rem);
+  font-size: clamp(1.3rem, 2.5vw, 2.1rem);
   line-height: 1.15;
   letter-spacing: -.04em;
 }
@@ -630,60 +812,39 @@ a:hover .arrow {
 }
 
 .about-stamp span {
-  font: 500 .5rem 'DM Mono',monospace;
+  font: 500 .5rem 'DM Mono', monospace;
   letter-spacing: .05em;
 }
 
 
 /* ==========================================================
-   EXPERIENCE SECTION
-========================================================== */
-
-.experience-row {
-  grid-column: 1/-1;
-  display: grid;
-  grid-template-columns: 1.2fr auto 1fr;
-  gap: 2rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--line);
-}
-
-.experience-row h3 {
-  font-size: clamp(1.4rem,3vw,2.5rem);
-  letter-spacing: -.06em;
-}
-
-.experience-row p {
-  color: var(--muted);
-  line-height: 1.5;
-}
-
-.experience-row time {
-  color: var(--orange);
-  font: 500 .8rem 'DM Mono',monospace;
-}
-
-
-/* ==========================================================
-   TOOLKIT SECTION
+   TOOLKIT
 ========================================================== */
 
 .toolkit {
   background: var(--paper);
   color: var(--ink);
+  padding-inline: max(
+    clamp(1.2rem, 4vw, 4.5rem),
+    calc((100vw - 1240px)/2 + clamp(1.2rem, 4vw, 4.5rem))
+  ) !important;
 }
 
 .toolkit .section-intro {
   display: block;
 }
 
+.toolkit .eyebrow {
+  color: var(--orange);
+}
+
 .toolkit-grid {
   display: grid;
-  grid-template-columns: repeat(4,1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
 }
 
-.toolkit-grid>div {
+.toolkit-grid > div {
   min-height: 14rem;
   padding-top: 1rem;
   border-top: 2px solid var(--ink);
@@ -691,12 +852,12 @@ a:hover .arrow {
 
 .toolkit-grid span {
   color: var(--orange);
-  font: 500 .7rem 'DM Mono',monospace;
+  font: 500 .7rem 'DM Mono', monospace;
 }
 
 .toolkit-grid h3 {
   margin-top: 2.5rem;
-  font-size: clamp(1.3rem,2vw,2rem);
+  font-size: clamp(1.3rem, 2vw, 2rem);
   letter-spacing: -.06em;
 }
 
@@ -708,13 +869,36 @@ a:hover .arrow {
 
 
 /* ==========================================================
-   CONTACT SECTION
+   CONTACT
 ========================================================== */
 
 .contact {
+  position: relative;
+  overflow: hidden;
   background: var(--lime);
   color: var(--ink);
   min-height: 80vh;
+  padding-inline: max(
+    clamp(1.2rem, 4vw, 4.5rem),
+    calc((100vw - 1240px)/2 + clamp(1.2rem, 4vw, 4.5rem))
+  ) !important;
+}
+
+.contact-scene {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.contact-scene canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.contact > *:not(.contact-scene) {
+  position: relative;
+  z-index: 1;
 }
 
 .contact-kicker {
@@ -722,8 +906,8 @@ a:hover .arrow {
 }
 
 .contact h2 {
-  margin-top: clamp(6rem,13vw,13rem);
-  font-size: clamp(4rem,13vw,13rem);
+  margin-top: clamp(6rem, 13vw, 13rem);
+  font-size: clamp(4rem, 13vw, 13rem);
   font-weight: 600;
   letter-spacing: -.1em;
   line-height: .77;
@@ -733,7 +917,7 @@ a:hover .arrow {
   color: var(--paper);
 }
 
-.contact>p {
+.contact > p {
   max-width: 25rem;
   margin-top: 2rem;
   font-size: 1.1rem;
@@ -760,321 +944,16 @@ footer {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
-  padding: 1.5rem clamp(1.2rem,4vw,4.5rem);
+  padding: 1.5rem clamp(1.2rem, 4vw, 4.5rem);
   background: var(--lime);
   color: var(--ink);
-  font: 500 .65rem 'DM Mono',monospace;
+  font: 500 .65rem 'DM Mono', monospace;
   letter-spacing: .06em;
 }
 
 
 /* ==========================================================
-   ANIMATIONS
-========================================================== */
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-
-/* ==========================================================
-   WORK LABELS
-========================================================== */
-
-.work-label {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  margin: 0 0 1rem;
-  padding-top: 1rem;
-  border-top: 2px solid var(--ink);
-  color: #656a72;
-  font: 500 .68rem 'DM Mono',monospace;
-  letter-spacing: .08em;
-}
-
-.work-label span:first-child {
-  color: var(--ink);
-}
-
-.software-label {
-  margin-top: clamp(4rem,8vw,8rem);
-}
-
-
-/* ==========================================================
-   FEATURED PAIR
-========================================================== */
-
-.featured-pair {
-  display: grid;
-  grid-template-columns: repeat(2,minmax(0,1fr));
-  gap: 1rem;
-}
-
-.featured-pair .featured {
-  min-width: 0;
-  min-height: 36rem;
-  grid-template-columns: 1fr;
-}
-
-.featured-pair .feature-copy h3 {
-  max-width: 20rem;
-  font-size: clamp(2.5rem,4.2vw,5rem);
-}
-
-.featured-pair .feature-signal {
-  margin-top: 1.5rem;
-  justify-self: start;
-  text-align: left;
-}
-
-
-/* ==========================================================
-   ADDITIONAL LAYOUT OVERRIDES
-========================================================== */
-
-.hero,
-.section {
-  padding-inline: clamp(1.2rem,4vw,4.5rem);
-}
-
-.hero,
-.about,
-.toolkit,
-.contact {
-  padding-inline: max(
-    clamp(1.2rem,4vw,4.5rem),
-    calc((100vw - 1240px)/2 + clamp(1.2rem,4vw,4.5rem))
-  ) !important;
-}
-
-.work {
-  padding-inline: clamp(1.2rem,4vw,4.5rem) !important;
-}
-
-
-/* ==========================================================
-   HERO PSEUDO-ELEMENT OVERRIDES
-========================================================== */
-
-.hero::after {
-  display: none !important;
-}
-
-.hero::before {
-  display: block !important;
-  z-index: 0;
-  opacity: .24 !important;
-  background-image:
-    linear-gradient(rgba(233,232,224,.14) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(233,232,224,.14) 1px,transparent 1px) !important;
-}
-
-.hero:has(.hero-note:hover)::before {
-  opacity: .17;
-  background-image:
-    linear-gradient(rgba(233,232,224,.12) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(233,232,224,.12) 1px,transparent 1px);
-}
-
-
-/* ==========================================================
-   CURSOR GRID GLOW
-========================================================== */
-
-.cursor-grid-glow {
-  position: absolute;
-  z-index: 0;
-  left: var(--pointer-x,50%);
-  top: var(--pointer-y,45%);
-  width: 24rem;
-  height: 9rem;
-  transform: translate(-50%,-50%) rotate(-8deg);
-  pointer-events: none;
-  opacity: var(--pointer-opacity,0);
-  transition:
-    opacity .25s ease,
-    left .4s cubic-bezier(.2,.8,.2,1),
-    top .4s cubic-bezier(.2,.8,.2,1);
-  background: radial-gradient(
-    ellipse at center,
-    rgba(216,255,62,.15) 0%,
-    rgba(216,255,62,.07) 28%,
-    rgba(216,255,62,.025) 52%,
-    transparent 76%
-  );
-  filter: blur(9px);
-  mix-blend-mode: screen;
-}
-
-
-/* ==========================================================
-   HERO GRID CANVAS & SVG
-========================================================== */
-
-.hero-grid-canvas {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
-.hero-grid-svg {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  overflow: visible;
-}
-
-.hero-svg-base {
-  fill: none;
-  stroke: rgba(233,232,224,.13);
-  stroke-width: 1;
-}
-
-.hero-svg-wave {
-  fill: none;
-  stroke: rgba(216,255,62,.7);
-  stroke-width: 1.5;
-  filter: drop-shadow(0 0 6px rgba(216,255,62,.4));
-}
-
-.hero-topline,
-.hero-grid,
-.hero-footer {
-  z-index: 2;
-}
-
-
-/* ==========================================================
-   FEATURED PROJECT OVERRIDES
-========================================================== */
-
-.featured-pair .featured {
-  min-height: 31rem !important;
-}
-
-.featured-pair .feature-visual {
-  font-size: clamp(2.4rem,6vw,6rem);
-  opacity: .72;
-}
-
-.featured-pair .feature-copy h3 {
-  font-size: clamp(2.5rem,4vw,4.8rem);
-}
-
-
-/* ==========================================================
-   PROJECT CARD OVERRIDES
-========================================================== */
-
-.project-card {
-  min-height: 23rem !important;
-  background: linear-gradient(135deg,#deddd5 0%,#d5d4cc 100%);
-}
-
-.project-card::after {
-  content: "";
-  position: absolute;
-  right: 2rem;
-  bottom: 2rem;
-  width: 4.5rem;
-  height: 4.5rem;
-  border: 1px solid var(--accent,var(--lime));
-  border-radius: 50%;
-  opacity: .55;
-}
-
-.project-card h3 {
-  margin-top: 2.5rem;
-  font-size: clamp(2rem,3.2vw,3.6rem);
-}
-
-.project-card>p {
-  max-width: 34rem;
-  font-size: 1rem;
-}
-
-.project-grid {
-  gap: 1.25rem;
-}
-
-
-/* ==========================================================
-   HERO WIDTH OVERRIDES
-========================================================== */
-
-.hero {
-  padding-inline: clamp(1.2rem,4vw,4.5rem) !important;
-}
-
-.hero-topline,
-.hero-grid,
-.hero-footer {
-  width: min(100%,1400px);
-  margin-inline: auto;
-}
-
-
-/* ==========================================================
-   HERO ATMOSPHERIC GLOW OVERRIDE
-========================================================== */
-
-.hero::after {
-  content: "";
-  position: absolute;
-  z-index: 0;
-  top: 24%;
-  right: 10%;
-  width: 52%;
-  height: 58%;
-  pointer-events: none;
-  background: radial-gradient(
-    circle at 50% 50%,
-    rgba(216,255,62,.16),
-    transparent 45%
-  );
-  opacity: 0;
-  transition: opacity .35s ease;
-}
-
-.hero:has(.hero-note:hover)::after {
-  opacity: 1;
-}
-
-.hero:has(.hero-note:hover)::before {
-  opacity: .34;
-  background-image:
-    linear-gradient(rgba(216,255,62,.2) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(216,255,62,.2) 1px,transparent 1px);
-}
-
-
-/* ==========================================================
-   DESKTOP RESPONSIVE STYLES
-========================================================== */
-
-@media (min-width: 851px) {
-  .hero-grid {
-    transform: translateX(-5rem);
-  }
-
-  .hero-orbit {
-    right: 8vw;
-  }
-}
-
-
-/* ==========================================================
-   TABLET RESPONSIVE STYLES
+   RESPONSIVE: tablet (850px and below)
 ========================================================== */
 
 @media (max-width: 850px) {
@@ -1084,33 +963,40 @@ footer {
     grid-template-columns: 1fr;
   }
 
-  .hero-orbit {
-    top: 42%;
-    right: -8%;
-    opacity: .6;
+  .hero-orbit-3d {
+    right: 50%;
+    transform: translateX(50%);
+    top: 9rem;
+    width: min(20rem, 80vw);
+    height: min(20rem, 80vw);
+    opacity: 1;
   }
 
   .section-copy {
     max-width: 28rem;
   }
 
-  .featured {
+  .data-row,
+  .software-row,
+  .featured-3d-grid {
     grid-template-columns: 1fr;
-    min-height: 37rem;
   }
 
-  .feature-signal {
-    margin-top: 2rem;
-    justify-self: start;
-    text-align: left;
+  .work .featured.data-card {
+    min-height: 26rem;
   }
 
-  .project-grid {
-    grid-template-columns: 1fr;
+  .work .data-card .feature-copy h3 {
+    font-size: clamp(2rem, 8vw, 2.8rem);
+  }
+
+  .work .data-card .feature-visual {
+    font-size: clamp(2rem, 9vw, 4rem);
+    opacity: .4;
   }
 
   .toolkit-grid {
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .about-body {
@@ -1120,7 +1006,7 @@ footer {
 
 
 /* ==========================================================
-   MOBILE RESPONSIVE STYLES
+   RESPONSIVE: mobile (560px and below)
 ========================================================== */
 
 @media (max-width: 560px) {
@@ -1147,7 +1033,7 @@ footer {
   }
 
   h1 {
-    font-size: clamp(4.2rem,20vw,7rem);
+    font-size: clamp(4.2rem, 20vw, 7rem);
   }
 
   .hero-note {
@@ -1171,16 +1057,7 @@ footer {
     font-size: 4.5rem;
   }
 
-  .featured {
-    min-height: 34rem;
-    padding: 1.3rem;
-  }
-
-  .feature-copy h3 {
-    font-size: 3.2rem;
-  }
-
-  .project-card {
+  .work .featured.data-card {
     min-height: 24rem;
   }
 
@@ -1188,433 +1065,625 @@ footer {
     grid-template-columns: 1fr;
   }
 
-  .experience-row {
-    grid-template-columns: 1fr auto;
-  }
-
-  .experience-row>p {
-    grid-column: 1/-1;
-  }
-
   footer {
     flex-direction: column;
   }
 }
 
-@media (max-width: 850px) {
-  .work .data-card .feature-visual {
-    font-size: clamp(2rem, 9vw, 4rem);
-    opacity: .4;
-  }
-}
-
 
 /* ==========================================================
-   FEATURED PAIR RESPONSIVE STYLES
+   REDUCED MOTION
 ========================================================== */
 
-@media (max-width: 850px) {
-  .featured-pair {
-    grid-template-columns: 1fr;
+@media (prefers-reduced-motion: reduce) {
+  .section-divider-pulse {
+    animation: none;
+    transform: translateX(40%);
   }
-}
 
-.work .work-columns {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 2.5rem;
-  align-items: start;
-}
+  .work .featured.data-card {
+    transition: none;
+  }
 
-.work .work-column {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-  min-width: 0;
-}
-
-.work .work-column .featured-stack {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.25rem;
-}
-
-.work .work-column .featured-stack .featured {
-  min-height: 26rem;
-}
-
-.work .work-column .project-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.25rem;
-}
-
-@media (max-width: 850px) {
-  .work .work-columns {
-    grid-template-columns: 1fr;
+  .work .featured.data-card:hover {
+    transform: none;
   }
 }
 
 /* ==========================================================
-   UNIFIED PROJECT CARDS (dark data / light software)
+   FAINTER BACKGROUND WORDS AND GRID (data + software)
 ========================================================== */
 
-.work .work-columns {
+.work .featured.data-card .feature-visual {
+  color: rgb(255, 179, 113);
+  opacity: 1;
+}
+
+.work .featured.data-card .feature-visual span:nth-child(2) {
+  color: var(--lime) !important;
+  opacity: .7;
+}
+
+.work .featured.data-card .feature-grid {
+  opacity: .12;
+}
+
+/* ==========================================================
+   ABOUT (03): spec table and status detail
+========================================================== */
+
+.about-body .about-lede {
+  max-width: 34rem;
+}
+
+.about-spec {
+  margin: 2.5rem 0 0;
+  border-top: 1px solid var(--line);
+  max-width: 34rem;
+}
+
+.about-spec > div {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 2.5rem;
+  grid-template-columns: 7.5rem minmax(0, 1fr);
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.about-spec dt {
+  padding-top: .2rem;
+  color: var(--lime);
+  font: 500 .65rem 'DM Mono', monospace;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.about-spec dd {
+  margin: 0;
+  color: var(--paper);
+  font-size: .95rem;
+  line-height: 1.5;
+}
+
+.about-pulse {
+  display: inline-block;
+  width: .5rem;
+  height: .5rem;
+  margin-right: .6rem;
+  border-radius: 50%;
+  background: var(--lime);
+  box-shadow: 0 0 8px var(--lime);
+  vertical-align: middle;
+  animation: about-blink 2.4s ease-in-out infinite;
+}
+
+@keyframes about-blink {
+  50% { opacity: .3; }
+}
+
+@media (max-width: 560px) {
+  .about-spec > div {
+    grid-template-columns: 5.5rem minmax(0, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-pulse {
+    animation: none;
+  }
+}
+
+/* ==========================================================
+   ABOUT (03): stamp in the left column, section cut short
+========================================================== */
+
+.about {
+  padding-bottom: 2.5rem !important;
+}
+
+.about-stamp-left {
+  margin-top: 3.5rem;
+  margin-left: 17rem;
+}
+
+@media (max-width: 850px) {
+  .about-stamp-left {
+    margin-left: 4rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .about-stamp-left {
+    margin-left: 0;
+  }
+}
+
+/* ==========================================================
+   TAG SEPARATORS: pink slashes with space on both sides
+========================================================== */
+
+.tag-row span:not(:last-child)::after {
+  margin-left: .5rem;
+  margin-right: .5rem;
+}
+
+/* ==========================================================
+   CONTACT: more space between heading and paragraph
+========================================================== */
+
+.contact > p {
+  margin-top: 4.5rem;
+}
+
+/* ==========================================================
+   SOFTWARE CARDS: calmer, no background words
+========================================================== */
+
+.work .featured.data-card.light .feature-visual {
+  display: none;
+}
+
+.work .featured.data-card.light {
+  min-height: 24rem;
+}
+
+.work .featured.data-card.light .feature-copy h3 {
+  font-size: clamp(2rem, 3vw, 2.8rem);
+}
+
+/* ==========================================================
+   BASIC CARDS: data and software share one look,
+   each card gets its own small bottom-right mark
+========================================================== */
+
+/* Hide the background grid on all light cards */
+.work .featured.data-card.light .feature-grid {
+  display: none;
+}
+
+/* Shared mark: a small ring in the bottom right */
+.work .featured.data-card::after {
+  content: "";
+  position: absolute;
+  right: 1.6rem;
+  bottom: 1.6rem;
+  width: 4.5rem;
+  height: 4.5rem;
+  border: 1px solid var(--accent, var(--lime));
+  border-radius: 50%;
+  opacity: .7;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Each card's accent color */
+.work .data-row > .data-card:nth-child(1) { --accent: var(--lime); }
+.work .data-row > .data-card:nth-child(2) { --accent: var(--pink); }
+.work .software-row > .data-card:nth-child(1) { --accent: var(--orange); }
+.work .software-row > .data-card:nth-child(2) { --accent: var(--blue); }
+.work .software-row > .data-card:nth-child(3) { --accent: var(--violet); }
+.work .software-row > .data-card:nth-child(4) { --accent: #1fb5a0; }
+
+/* PulseMetrics: plain ring (already set by the shared rule) */
+
+/* Data Quality Observatory: a solid dot in the centre of the ring */
+.work .data-row > .data-card:nth-child(2)::before {
+  content: "";
+  position: absolute;
+  right: 2.6rem;
+  bottom: 2.6rem;
+  width: .5rem;
+  height: .5rem;
+  border-radius: 50%;
+  background: var(--pink);
+  z-index: 0;
+}
+
+/* Momente: plain ring (shared rule) */
+
+/* TechPoint Business OS: a solid dot in the centre */
+.work .software-row > .data-card:nth-child(2)::before {
+  content: "";
+  position: absolute;
+  right: 2.6rem;
+  bottom: 2.6rem;
+  width: .5rem;
+  height: .5rem;
+  border-radius: 50%;
+  background: var(--blue);
+  z-index: 0;
+}
+
+/* Consulting Meeting Optimizer: dashed ring */
+.work .software-row > .data-card:nth-child(3)::after {
+  border-style: dashed;
+}
+
+/* CloudVision AI: a smaller inner ring */
+.work .software-row > .data-card:nth-child(4)::before {
+  content: "";
+  position: absolute;
+  right: 2.1rem;
+  bottom: 2.1rem;
+  width: 3.4rem;
+  height: 3.4rem;
+  border: 1px solid #1fb5a0;
+  border-radius: 50%;
+  opacity: .6;
+  z-index: 0;
+}
+
+/* ==========================================================
+   WORK: split layout (data left, software right, orange divider)
+========================================================== */
+
+.work-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 1px minmax(0, 1.6fr);
+  gap: clamp(1.5rem, 3vw, 3rem);
   align-items: stretch;
 }
 
-.work .work-column {
+.work-dark,
+.work-light {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
   min-width: 0;
 }
 
-.work .work-column .work-label {
-  margin: 0 0 1rem;
-}
-
-.work .work-column .software-label {
-  margin-top: 0 !important;
-}
-
-.work .project-grid {
+.work-light .work-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.25rem;
+  align-items: stretch;
 }
 
-.work .project-card {
-  min-height: 34rem !important;
-  height: auto;
-}
-
-.work .project-card .card-actions {
-  margin-top: auto;
-  padding-top: 1rem;
-}
-
-/* Dark data cards */
-.project-card.dark {
-  background: var(--ink) !important;
-  color: var(--paper);
-}
-
-.project-card.dark:hover {
-  background: var(--ink) !important;
-}
-
-.project-card.dark h3 {
-  color: var(--paper);
-}
-
-.project-card.dark > p {
-  color: var(--muted);
-}
-
-.project-card.dark .card-top span:first-child {
-  color: var(--paper);
-}
-
-.project-card.dark .card-top span:last-child,
-.project-card.dark .tag-row,
-.project-card.dark .card-meta {
-  color: var(--muted);
-}
-
-.project-card.dark .card-actions {
-  border-top-color: var(--line);
-}
-
-.signal-visual {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: .5rem;
-  margin-top: 2.2rem;
-  color: var(--lime);
-  font-weight: 700;
-  font-size: clamp(1.8rem, 3.4vw, 3.2rem);
-  letter-spacing: -.07em;
-  line-height: .9;
-  transform: rotate(-6deg);
-  transform-origin: left center;
-}
-
-.signal-visual i {
-  color: var(--orange);
-  font-family: Georgia, serif;
-  font-style: normal;
-  font-weight: 400;
-}
-
-.project-card.dark .signal-visual span:last-child {
-  color: var(--paper);
-}
-
-/* Light software cards */
-.project-card.light .card-meta {
-  color: #656a72;
-}
-
-.card-meta {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-top: 1.2rem;
-  font: 500 .62rem 'DM Mono', monospace;
-  letter-spacing: .08em;
-}
-
-@media (max-width: 850px) {
-  .work .work-columns {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* ==========================================================
-   DATA CARDS: all four match the NovaCart / TechPoint design
-========================================================== */
-
-.work .data-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-
-.work .featured.data-card {
-  display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(12rem, .8fr);
-  min-height: 32rem;
-  margin-bottom: 0;
-  padding: clamp(1.5rem, 3vw, 2.5rem);
-  background: var(--ink);
-}
-
-.work .data-card .feature-visual {
-  align-items: flex-end;
-  justify-content: flex-end;
-  padding: 2rem;
-  font-size: clamp(2.2rem, 4vw, 4.2rem);
-  opacity: .55;
-}
-
-.work .data-card .feature-copy {
-  align-self: end;
-  max-width: 30rem;
-}
-
-.work .data-card .feature-copy h3 {
-  font-size: clamp(2.4rem, 3.6vw, 3.8rem);
-  line-height: .88;
-}
-
-.work .data-card .feature-copy > p:not(.eyebrow) {
-  margin-top: 1.2rem;
-  font-size: .95rem;
-  line-height: 1.6;
-}
-
-.work .data-card .card-actions {
-  display: flex;
-  gap: 1.4rem;
-  margin-top: 1.4rem;
-  padding-top: .8rem;
-  border-top: 1px solid var(--line);
-}
-
-.work .data-card .card-actions a {
-  margin-top: 0;
-  color: var(--lime);
-  font-size: .85rem;
-  border-bottom: 1px solid var(--lime);
-  padding-bottom: .25rem;
-}
-
-.work .data-card .feature-signal {
-  align-self: start;
-  justify-self: end;
-  text-align: right;
-}
-
-.work .data-card {
-  transition: transform .25s, box-shadow .25s;
-}
-
-.work .data-card:hover {
-  transform: translateY(-.35rem);
-}
-
-@media (max-width: 850px) {
-  .work .featured.data-card {
-    grid-template-columns: 1fr;
-    min-height: 34rem;
-  }
-}
-
-/* ==========================================================
-   LIGHT SOFTWARE CARDS: same design as data cards, light palette
-========================================================== */
-
-.work .featured.data-card.light {
-  background: #e6e5de;
-  color: var(--ink);
-  border-top: 6px solid var(--orange);
-}
-
-.work .featured.data-card.light .feature-visual {
-  color: var(--ink);
-}
-
-.work .featured.data-card.light .feature-visual span:nth-child(2) {
-  color: var(--orange);
-}
-
-.work .featured.data-card.light .feature-grid {
-  background:
-    linear-gradient(90deg,transparent 49%,rgba(16,18,24,.35) 50%,transparent 51%),
-    linear-gradient(transparent 49%,rgba(16,18,24,.35) 50%,transparent 51%);
-}
-
-.work .featured.data-card.light .eyebrow {
-  color: var(--orange);
-}
-
-.work .featured.data-card.light .feature-copy > p:not(.eyebrow) {
-  color: #4d525a;
-}
-
-.work .featured.data-card.light .tag-row {
-  color: #656a72;
-}
-
-.work .featured.data-card.light .card-actions {
-  border-top-color: rgba(16,18,24,.18);
-}
-
-.work .featured.data-card.light .card-actions a {
-  color: var(--ink);
-  border-bottom: 1px solid var(--ink);
-  padding-bottom: .25rem;
-}
-
-.work .featured.data-card.light .feature-signal span,
-.work .featured.data-card.light .feature-signal small {
-  color: var(--orange);
-}
-
-.work .featured.data-card.light .feature-signal strong {
-  color: var(--ink);
-}
-
-/* ==========================================================
-   RESTORE CENTERED BIG WORDS (data + software)
-========================================================== */
-
-.work .data-card .feature-visual {
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  font-size: clamp(3rem, 10vw, 10rem);
+.work-divider {
+  width: 1px;
+  background: var(--orange);
   opacity: .85;
 }
 
-/* ==========================================================
-   SOFTWARE CARDS: one consistent light palette
-========================================================== */
-
-.work .data-stack .data-card.light {
-  background: #e6e5de;
-  border-top: 6px solid var(--orange);
+/* Dark cards fill the left column top to bottom */
+.work-dark .work .data-card,
+.work-dark .featured.data-card {
+  flex: 1;
+  min-height: 28rem;
 }
 
-.work .data-card.light .feature-visual span:not(:nth-child(2)) {
-  color: var(--orange);
+/* Keep the big background words inside the narrower dark column */
+.work-dark .featured.data-card .feature-visual {
+  font-size: clamp(2rem, 4.2vw, 4.2rem);
 }
 
-.work .data-card.light .feature-visual span:nth-child(2) {
-  color: var(--ink);
+/* Light cards keep their height so the grid stays even */
+.work-light .featured.data-card {
+  min-height: 24rem;
 }
 
-.work .data-card.light .feature-grid {
-  background:
-    linear-gradient(90deg, transparent 49%, var(--orange) 50%, transparent 51%),
-    linear-gradient(transparent 49%, var(--orange) 50%, transparent 51%);
-  opacity: .3;
-}
+/* Mobile: stack the zones, turn the divider horizontal */
+@media (max-width: 850px) {
+  .work-split {
+    grid-template-columns: 1fr;
+  }
 
-.work .data-card.light .eyebrow {
-  color: var(--orange);
-}
+  .work-divider {
+    width: 100%;
+    height: 1px;
+  }
 
-.work .data-card.light .feature-signal span,
-.work .data-card.light .feature-signal small {
-  color: var(--orange);
-}
+  .work-light .work-grid {
+    grid-template-columns: 1fr;
+  }
 
-.work .data-card.light .card-actions a {
-  color: var(--ink);
-  border-bottom: 1px solid var(--orange);
-}
-
-/* ==========================================================
-   ARROWS, SLASHES, AND BORDERS
-========================================================== */
-
-/* Arrow between the big words: neon yellow on all data and software cards */
-.work .data-card .feature-visual span:nth-child(2) {
-  color: var(--lime);
-}
-
-/* Slashes in tag rows: neon pink */
-.work .tag-row span:not(:last-child)::after {
-  color: var(--pink);
-}
-
-/* Software card top border: faint black instead of bold orange */
-.work .data-stack .data-card.light {
-  border-top: 1px solid rgba(16, 18, 24, .12);
-}
-
-/* Divider line above the links: faint on light cards */
-.work .data-card.light .card-actions {
-  border-top-color: rgba(16, 18, 24, .12);
+  .work-dark .featured.data-card {
+    min-height: 26rem;
+  }
 }
 
 /* ==========================================================
-   FINAL ACCENTS: arrows, link arrows, faint borders
+   DATA CARDS: remove the big background words
 ========================================================== */
 
-/* Middle arrow between the big words: neon yellow on every data and software card */
-.work .featured.data-card .feature-visual > span:nth-child(2) {
-  color: var(--lime) !important;
+.work .featured.data-card.dark .feature-visual,
+.work .featured.data-card.dark .feature-grid {
+  display: none;
 }
 
-/* Repository and Live arrows: neon pink */
-.work .data-card .card-actions a .arrow {
-  color: var(--pink) !important;
+/* ==========================================================
+   CARD MARKS: shared ring, with a different detail per card
+========================================================== */
+
+/* Shared ring in the bottom right of every data and software card */
+.work .featured.data-card::after {
+  content: "";
+  position: absolute;
+  right: 1.6rem;
+  bottom: 1.6rem;
+  width: 4.5rem;
+  height: 4.5rem;
+  border: 1px solid var(--accent, var(--lime));
+  border-radius: 50%;
+  opacity: .7;
+  pointer-events: none;
+  z-index: 0;
 }
 
-/* Top border of each card: faint */
-.work .data-card {
-  border-top: 1px solid rgba(233, 232, 224, .12);
-  border-bottom: 1px solid rgba(233, 232, 224, .12);
+/* Dark column: PulseMetrics, then Data Quality Observatory */
+.work-dark > article:nth-of-type(1) { --accent: var(--lime); }
+.work-dark > article:nth-of-type(2) { --accent: var(--pink); }
+
+/* Light grid: Momente, TechPoint Business OS, Consulting Meeting Optimizer, CloudVision AI */
+.work-grid > article:nth-of-type(1) { --accent: var(--orange); }
+.work-grid > article:nth-of-type(2) { --accent: var(--blue); }
+.work-grid > article:nth-of-type(3) { --accent: var(--violet); }
+.work-grid > article:nth-of-type(4) { --accent: #1fb5a0; }
+
+/* Data Quality Observatory: solid pink dot in the centre of the ring */
+.work-dark > article:nth-of-type(2)::before {
+  content: "";
+  position: absolute;
+  right: 2.6rem;
+  bottom: 2.6rem;
+  width: .5rem;
+  height: .5rem;
+  border-radius: 50%;
+  background: var(--pink);
+  z-index: 0;
 }
 
-.work .data-card.light {
-  border-top: 1px solid rgba(16, 18, 24, .12);
-  border-bottom: 1px solid rgba(16, 18, 24, .12);
+/* TechPoint Business OS: solid blue dot in the centre of the ring */
+.work-grid > article:nth-of-type(2)::before {
+  content: "";
+  position: absolute;
+  right: 2.6rem;
+  bottom: 2.6rem;
+  width: .5rem;
+  height: .5rem;
+  border-radius: 50%;
+  background: var(--blue);
+  z-index: 0;
 }
 
-/* Line above the links: faint */
-.work .data-card .card-actions {
-  border-top: 1px solid rgba(233, 232, 224, .12);
+/* Consulting Meeting Optimizer: dashed violet ring */
+.work-grid > article:nth-of-type(3)::after {
+  border-style: dashed;
 }
 
-.work .data-card.light .card-actions {
-  border-top: 1px solid rgba(16, 18, 24, .12);
+/* CloudVision AI: smaller inner teal ring */
+.work-grid > article:nth-of-type(4)::before {
+  content: "";
+  position: absolute;
+  right: 2.1rem;
+  bottom: 2.1rem;
+  width: 3.4rem;
+  height: 3.4rem;
+  border: 1px solid #1fb5a0;
+  border-radius: 50%;
+  opacity: .6;
+  z-index: 0;
 }
 
+/* ==========================================================
+   WORK CARDS: one fixed size for every card
+========================================================== */
+
+.work .featured.data-card,
+.work-dark .featured.data-card,
+.work-light .featured.data-card {
+  flex: none;
+  height: 30rem;
+  min-height: 30rem;
+  max-height: 30rem;
+}
+
+@media (max-width: 850px) {
+  .work .featured.data-card,
+  .work-dark .featured.data-card,
+  .work-light .featured.data-card {
+    height: 26rem;
+    min-height: 26rem;
+    max-height: 26rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .work .featured.data-card,
+  .work-dark .featured.data-card,
+  .work-light .featured.data-card {
+    height: 24rem;
+    min-height: 24rem;
+    max-height: 24rem;
+  }
+}
+
+/* ==========================================================
+   FEATURED 3D: bigger scenes and space above the card line
+========================================================== */
+
+.featured-scene {
+  height: 28rem;
+}
+
+.featured-body .tag-row {
+  margin-bottom: 1.4rem;
+}
+
+.featured-body .card-actions {
+  padding-top: 1.4rem;
+}
+
+@media (max-width: 850px) {
+  .featured-scene {
+    height: 22rem;
+  }
+}
+
+/* ==========================================================
+   FEATURED SECTION: match page margins, stop overflow
+========================================================== */
+
+.featured-3d {
+  padding-inline: clamp(1.2rem, 4vw, 4.5rem) !important;
+  overflow-x: hidden;
+}
+
+.featured-3d .section-intro {
+  grid-template-columns: minmax(15rem, .7fr) minmax(0, 1fr) minmax(15rem, .7fr);
+  gap: 2rem;
+  align-items: start;
+}
+
+.featured-3d .section-intro h2 {
+  font-size: clamp(3rem, 5.6vw, 6rem);
+  white-space: normal;
+}
+
+.featured-3d .section-intro h2 br {
+  display: inline;
+}
+
+.featured-3d-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: 100%;
+}
+
+.featured-3d-grid > * {
+  min-width: 0;
+}
+
+.featured-scene canvas {
+  max-width: 100%;
+}
+
+@media (max-width: 850px) {
+  .featured-3d .section-intro {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================
+   WORK SECTION (02): match page margins, stop overflow
+========================================================== */
+
+.work {
+  padding-inline: clamp(1.2rem, 4vw, 4.5rem) !important;
+  overflow-x: hidden;
+}
+
+.work .section-intro {
+  grid-template-columns: minmax(15rem, .7fr) minmax(0, 1fr) minmax(15rem, .7fr);
+  gap: 2rem;
+  align-items: start;
+}
+
+.work .section-intro h2 {
+  font-size: clamp(3rem, 5.6vw, 6rem);
+  white-space: normal;
+}
+
+.work .section-intro h2 br {
+  display: inline;
+}
+
+.work-split {
+  width: 100%;
+  grid-template-columns: minmax(0, 1fr) 1px minmax(0, 1.6fr);
+}
+
+.work-dark,
+.work-light {
+  min-width: 0;
+}
+
+.work-light .work-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 850px) {
+  .work .section-intro {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================
+   SECTION TITLES (02 and 01): centred on the page
+========================================================== */
+
+.work .section-intro h2,
+.featured-3d .section-intro h2 {
+  justify-self: center;
+  text-align: center;
+}
+
+/* ==========================================================
+   WORK DESCRIPTION: top-right corner, orange like the eyebrow
+========================================================== */
+
+.work .section-intro .section-copy {
+  justify-self: end;
+  align-self: start;
+  max-width: 22rem;
+  margin-top: 0;
+  text-align: right;
+  color: var(--orange);
+}
+
+@media (max-width: 850px) {
+  .work .section-intro .section-copy {
+    justify-self: start;
+    text-align: left;
+  }
+}
+
+/* ==========================================================
+   PHONE LAYOUT: stack all cards one by one, move the sphere below the title
+========================================================== */
+
+@media (max-width: 850px) {
+  /* Work: data and software stacked, divider horizontal */
+  .work-split {
+    grid-template-columns: 1fr !important;
+    gap: 2.5rem !important;
+  }
+
+  .work-divider {
+    width: 100% !important;
+    height: 1px !important;
+  }
+
+  .work-dark,
+  .work-light {
+    gap: 1.5rem !important;
+  }
+
+  .work-light .work-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+
+  /* Cards: natural height so text never gets cut off */
+  .work .featured.data-card {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+  }
+
+  /* Featured 3D: one card per row */
+  .featured-3d-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+
+  /* Hero sphere: sits under the headline instead of over it */
+  .hero-grid .hero-orbit-3d {
+    position: relative !important;
+    right: auto !important;
+    top: auto !important;
+    transform: none !important;
+    width: min(20rem, 80vw) !important;
+    height: min(20rem, 80vw) !important;
+    margin: 2rem auto 0 !important;
+  }
+}
