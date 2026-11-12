@@ -1201,6 +1201,13 @@ footer {
   }
 }
 
+@media (max-width: 850px) {
+  .work .data-card .feature-visual {
+    font-size: clamp(2rem, 9vw, 4rem);
+    opacity: .4;
+  }
+}
+
 
 /* ==========================================================
    FEATURED PAIR RESPONSIVE STYLES
@@ -1367,3 +1374,247 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+
+/* ==========================================================
+   DATA CARDS: all four match the NovaCart / TechPoint design
+========================================================== */
+
+.work .data-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.work .featured.data-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(12rem, .8fr);
+  min-height: 32rem;
+  margin-bottom: 0;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  background: var(--ink);
+}
+
+.work .data-card .feature-visual {
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 2rem;
+  font-size: clamp(2.2rem, 4vw, 4.2rem);
+  opacity: .55;
+}
+
+.work .data-card .feature-copy {
+  align-self: end;
+  max-width: 30rem;
+}
+
+.work .data-card .feature-copy h3 {
+  font-size: clamp(2.4rem, 3.6vw, 3.8rem);
+  line-height: .88;
+}
+
+.work .data-card .feature-copy > p:not(.eyebrow) {
+  margin-top: 1.2rem;
+  font-size: .95rem;
+  line-height: 1.6;
+}
+
+.work .data-card .card-actions {
+  display: flex;
+  gap: 1.4rem;
+  margin-top: 1.4rem;
+  padding-top: .8rem;
+  border-top: 1px solid var(--line);
+}
+
+.work .data-card .card-actions a {
+  margin-top: 0;
+  color: var(--lime);
+  font-size: .85rem;
+  border-bottom: 1px solid var(--lime);
+  padding-bottom: .25rem;
+}
+
+.work .data-card .feature-signal {
+  align-self: start;
+  justify-self: end;
+  text-align: right;
+}
+
+.work .data-card {
+  transition: transform .25s, box-shadow .25s;
+}
+
+.work .data-card:hover {
+  transform: translateY(-.35rem);
+}
+
+@media (max-width: 850px) {
+  .work .featured.data-card {
+    grid-template-columns: 1fr;
+    min-height: 34rem;
+  }
+}
+
+/* ==========================================================
+   LIGHT SOFTWARE CARDS: same design as data cards, light palette
+========================================================== */
+
+.work .featured.data-card.light {
+  background: #e6e5de;
+  color: var(--ink);
+  border-top: 6px solid var(--orange);
+}
+
+.work .featured.data-card.light .feature-visual {
+  color: var(--ink);
+}
+
+.work .featured.data-card.light .feature-visual span:nth-child(2) {
+  color: var(--orange);
+}
+
+.work .featured.data-card.light .feature-grid {
+  background:
+    linear-gradient(90deg,transparent 49%,rgba(16,18,24,.35) 50%,transparent 51%),
+    linear-gradient(transparent 49%,rgba(16,18,24,.35) 50%,transparent 51%);
+}
+
+.work .featured.data-card.light .eyebrow {
+  color: var(--orange);
+}
+
+.work .featured.data-card.light .feature-copy > p:not(.eyebrow) {
+  color: #4d525a;
+}
+
+.work .featured.data-card.light .tag-row {
+  color: #656a72;
+}
+
+.work .featured.data-card.light .card-actions {
+  border-top-color: rgba(16,18,24,.18);
+}
+
+.work .featured.data-card.light .card-actions a {
+  color: var(--ink);
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: .25rem;
+}
+
+.work .featured.data-card.light .feature-signal span,
+.work .featured.data-card.light .feature-signal small {
+  color: var(--orange);
+}
+
+.work .featured.data-card.light .feature-signal strong {
+  color: var(--ink);
+}
+
+/* ==========================================================
+   RESTORE CENTERED BIG WORDS (data + software)
+========================================================== */
+
+.work .data-card .feature-visual {
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  font-size: clamp(3rem, 10vw, 10rem);
+  opacity: .85;
+}
+
+/* ==========================================================
+   SOFTWARE CARDS: one consistent light palette
+========================================================== */
+
+.work .data-stack .data-card.light {
+  background: #e6e5de;
+  border-top: 6px solid var(--orange);
+}
+
+.work .data-card.light .feature-visual span:not(:nth-child(2)) {
+  color: var(--orange);
+}
+
+.work .data-card.light .feature-visual span:nth-child(2) {
+  color: var(--ink);
+}
+
+.work .data-card.light .feature-grid {
+  background:
+    linear-gradient(90deg, transparent 49%, var(--orange) 50%, transparent 51%),
+    linear-gradient(transparent 49%, var(--orange) 50%, transparent 51%);
+  opacity: .3;
+}
+
+.work .data-card.light .eyebrow {
+  color: var(--orange);
+}
+
+.work .data-card.light .feature-signal span,
+.work .data-card.light .feature-signal small {
+  color: var(--orange);
+}
+
+.work .data-card.light .card-actions a {
+  color: var(--ink);
+  border-bottom: 1px solid var(--orange);
+}
+
+/* ==========================================================
+   ARROWS, SLASHES, AND BORDERS
+========================================================== */
+
+/* Arrow between the big words: neon yellow on all data and software cards */
+.work .data-card .feature-visual span:nth-child(2) {
+  color: var(--lime);
+}
+
+/* Slashes in tag rows: neon pink */
+.work .tag-row span:not(:last-child)::after {
+  color: var(--pink);
+}
+
+/* Software card top border: faint black instead of bold orange */
+.work .data-stack .data-card.light {
+  border-top: 1px solid rgba(16, 18, 24, .12);
+}
+
+/* Divider line above the links: faint on light cards */
+.work .data-card.light .card-actions {
+  border-top-color: rgba(16, 18, 24, .12);
+}
+
+/* ==========================================================
+   FINAL ACCENTS: arrows, link arrows, faint borders
+========================================================== */
+
+/* Middle arrow between the big words: neon yellow on every data and software card */
+.work .featured.data-card .feature-visual > span:nth-child(2) {
+  color: var(--lime) !important;
+}
+
+/* Repository and Live arrows: neon pink */
+.work .data-card .card-actions a .arrow {
+  color: var(--pink) !important;
+}
+
+/* Top border of each card: faint */
+.work .data-card {
+  border-top: 1px solid rgba(233, 232, 224, .12);
+  border-bottom: 1px solid rgba(233, 232, 224, .12);
+}
+
+.work .data-card.light {
+  border-top: 1px solid rgba(16, 18, 24, .12);
+  border-bottom: 1px solid rgba(16, 18, 24, .12);
+}
+
+/* Line above the links: faint */
+.work .data-card .card-actions {
+  border-top: 1px solid rgba(233, 232, 224, .12);
+}
+
+.work .data-card.light .card-actions {
+  border-top: 1px solid rgba(16, 18, 24, .12);
+}
+

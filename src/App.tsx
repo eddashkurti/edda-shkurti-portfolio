@@ -234,8 +234,15 @@ const dataCards: DataCard[] = [
   { eyebrow: "04 / quality observability", title: "Data Quality Observatory", description: "Profiles every dataset, enforces deterministic rules, and quarantines bad rows, then charts quality run by run so no regression slips in quietly.", technologies: ["React", "TypeScript", "Express", "Postgres"], href: dataProjects[1].href, signal: "PROFILE / RULE / QUARANTINE", from: "PROFILE", to: "QUARANTINE", tag: "04 / 08" },
 ];
 
-function DataCardFeature({ card }: { card: DataCard }) {
-  return <article className="featured data-card">
+const softwareCards: DataCard[] = [
+  { eyebrow: "05 / event systems", title: softwareProjects[0].title, description: softwareProjects[0].description, technologies: softwareProjects[0].technologies, href: softwareProjects[0].href, live: softwareProjects[0].live, signal: "QR / GALLERY / SHARE", from: "QR", to: "SHARE", tag: "05 / 08" },
+  { eyebrow: "06 / business finance", title: softwareProjects[1].title, description: softwareProjects[1].description, technologies: softwareProjects[1].technologies, href: softwareProjects[1].href, signal: "STOCK / LEDGER / CONTROL", from: "STOCK", to: "CONTROL", tag: "06 / 08" },
+  { eyebrow: "07 / workflow product", title: softwareProjects[2].title, description: softwareProjects[2].description, technologies: softwareProjects[2].technologies, href: softwareProjects[2].href, signal: "REQUEST / APPROVE / FLOW", from: "REQUEST", to: "FLOW", tag: "07 / 08" },
+  { eyebrow: "08 / edge ai privacy", title: softwareProjects[3].title, description: softwareProjects[3].description, technologies: softwareProjects[3].technologies, href: softwareProjects[3].href, live: softwareProjects[3].live, signal: "PIXELS / ON-DEVICE / PRIVATE", from: "PIXELS", to: "PRIVATE", tag: "08 / 08" },
+];
+
+function DataCardFeature({ card, tone = "dark" }: { card: DataCard; tone?: "dark" | "light" }) {
+  return <article className={`featured data-card ${tone}`}>
     <div className="feature-visual" aria-hidden="true"><span>{card.from}</span><span>→</span><span>{card.to}</span><div className="feature-grid" /></div>
     <div className="feature-copy">
       <p className="eyebrow">{card.eyebrow}</p>
@@ -250,7 +257,6 @@ function DataCardFeature({ card }: { card: DataCard }) {
     <div className="feature-signal"><span>LIVE SIGNAL</span><strong>{card.signal}</strong><small>{card.tag}</small></div>
   </article>;
 }
-
 function Work() {
   return <section className="work section" id="work">
     <div className="section-intro"><p className="eyebrow">01 / Selected signals</p><h2>Things I’ve<br /><i>made real.</i></h2><p className="section-copy">A working archive of platforms, products, and experiments. Each one starts with a messy problem and ends with a clearer system.</p></div>
@@ -261,7 +267,7 @@ function Work() {
       </div>
       <div className="work-column">
         <div className="work-label software-label"><span>SOFTWARE PROJECTS</span><span>04 PRODUCTS / WORKFLOWS / INTERFACES</span></div>
-        <div className="project-grid">{softwareProjects.map((project) => <ProjectCard key={project.title} card={project} tone="light" />)}</div>
+        <div className="data-stack">{softwareCards.map((card) => <DataCardFeature key={card.title} card={card} tone="light" />)}</div>
       </div>
     </div>
   </section>;
