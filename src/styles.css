@@ -365,7 +365,12 @@ h1 {
   font-weight: 600;
 }
 
-
+.hero-title-wrap h1 > i {
+  display: inline-block;
+  font-size: 0.72em;
+  transform: none;
+  transform-origin: left center;
+}
 /* ==========================================================
    SECTION DIVIDER WITH TRAVELLING PULSE
 ========================================================== */
@@ -971,6 +976,19 @@ footer {
     height: min(20rem, 80vw);
     opacity: 1;
   }
+
+.hero-title-wrap h1 {
+  line-height: 0.9;
+}
+
+.hero-title-wrap h1 > i {
+  display: block;
+  font-size: 0.72em;
+  line-height: 1.1;
+  transform: none;
+  position: relative;
+  top: 0.12em;
+}
 
   .section-copy {
     max-width: 28rem;
