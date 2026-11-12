@@ -1211,3 +1211,159 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+
+.work .work-columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.work .work-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  min-width: 0;
+}
+
+.work .work-column .featured-stack {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+.work .work-column .featured-stack .featured {
+  min-height: 26rem;
+}
+
+.work .work-column .project-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (max-width: 850px) {
+  .work .work-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================
+   UNIFIED PROJECT CARDS (dark data / light software)
+========================================================== */
+
+.work .work-columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 2.5rem;
+  align-items: stretch;
+}
+
+.work .work-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  min-width: 0;
+}
+
+.work .work-column .work-label {
+  margin: 0 0 1rem;
+}
+
+.work .work-column .software-label {
+  margin-top: 0 !important;
+}
+
+.work .project-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+.work .project-card {
+  min-height: 34rem !important;
+  height: auto;
+}
+
+.work .project-card .card-actions {
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+/* Dark data cards */
+.project-card.dark {
+  background: var(--ink) !important;
+  color: var(--paper);
+}
+
+.project-card.dark:hover {
+  background: var(--ink) !important;
+}
+
+.project-card.dark h3 {
+  color: var(--paper);
+}
+
+.project-card.dark > p {
+  color: var(--muted);
+}
+
+.project-card.dark .card-top span:first-child {
+  color: var(--paper);
+}
+
+.project-card.dark .card-top span:last-child,
+.project-card.dark .tag-row,
+.project-card.dark .card-meta {
+  color: var(--muted);
+}
+
+.project-card.dark .card-actions {
+  border-top-color: var(--line);
+}
+
+.signal-visual {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .5rem;
+  margin-top: 2.2rem;
+  color: var(--lime);
+  font-weight: 700;
+  font-size: clamp(1.8rem, 3.4vw, 3.2rem);
+  letter-spacing: -.07em;
+  line-height: .9;
+  transform: rotate(-6deg);
+  transform-origin: left center;
+}
+
+.signal-visual i {
+  color: var(--orange);
+  font-family: Georgia, serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.project-card.dark .signal-visual span:last-child {
+  color: var(--paper);
+}
+
+/* Light software cards */
+.project-card.light .card-meta {
+  color: #656a72;
+}
+
+.card-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.2rem;
+  font: 500 .62rem 'DM Mono', monospace;
+  letter-spacing: .08em;
+}
+
+@media (max-width: 850px) {
+  .work .work-columns {
+    grid-template-columns: 1fr;
+  }
+}
