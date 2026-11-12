@@ -1,5 +1,7 @@
 # Edda Shkurti — Portfolio
 
+https://eddashkurti.vercel.app/
+
 Personal portfolio for Edda Shkurti, a Computer Engineering student focused on data engineering, cloud platforms, and practical software.
 
 The site is designed as a **signal console** rather than a conventional portfolio template: an editorial archive of systems, products, and experiments with a dark instrument-panel aesthetic, sharp type, orbit graphics, and a project grid built from real GitHub work.
@@ -14,19 +16,6 @@ The site is designed as a **signal console** rather than a conventional portfoli
 - [Consulting Meeting Optimizer](https://github.com/eddashkurti/consulting-meeting-optimizer) — role-based tasks, meetings, workload, and team workflows.
 - [CloudVision AI](https://github.com/eddashkurti/cloudvision-ai) — privacy-first browser image classification using TensorFlow.js.
 - [TechPoint Business OS](https://github.com/eddashkurti/techpoint-business-os) — a private Laravel business system for inventory, sales, accounting, reporting, and auditability.
-
-## Run locally
-
-```bash
-npm install
-npm run dev
-```
-
-Open the local URL printed by Vite. Create a production build with:
-
-```bash
-npm run build
-```
 
 ## Stack
 
